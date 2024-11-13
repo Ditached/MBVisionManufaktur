@@ -13,6 +13,8 @@ public class UDP_MulticastSender : MonoBehaviour
     private UdpClient client;
     private IPEndPoint multicastEndPoint;
 
+    private long count;
+
     private void Awake()
     {
         try
@@ -25,7 +27,7 @@ public class UDP_MulticastSender : MonoBehaviour
             
             Debug.Log($"[MULTICAST SENDER] Multicast sender initialized on {multicastAddress}:{port}");
             
-            InvokeRepeating(nameof(SendPing), 0, 0.25f);
+            InvokeRepeating(nameof(SendPing), 0, 0.5f);
         }
         catch (Exception e)
         {
@@ -35,7 +37,7 @@ public class UDP_MulticastSender : MonoBehaviour
     
     public void SendPing()
     {
-        SendUDPMsg("PING");
+        SendUDPMsg($"Ping [{count++}]");
     }
 
     public void SendUDPMsg(string message)

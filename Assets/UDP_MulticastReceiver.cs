@@ -2,21 +2,28 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections.Concurrent;
 
 public class UDP_MulticastReceiver : MonoBehaviour
 {
     public string multicastAddress = "239.255.255.252";
     public int port = 62111;
+    public TMP_Text optionalDebugText;
 
     public UnityEvent<string> OnMessageReceived = new UnityEvent<string>();
 
     private UdpClient client;
     private bool isInitialized = false;
-    private IPEndPoint remoteEndPoint;
-    
+    private bool isRunning = false;
+    private Thread receiveThread;
     private DateTime lastReceived;
+    
+    // Thread-safe queue for messages
+    private ConcurrentQueue<(string message, string logMessage)> messageQueue = new ConcurrentQueue<(string, string)>();
 
     private void Awake()
     {
@@ -26,10 +33,15 @@ public class UDP_MulticastReceiver : MonoBehaviour
             client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             client.Client.Bind(new IPEndPoint(IPAddress.Any, port));
             client.JoinMulticastGroup(IPAddress.Parse(multicastAddress));
-            remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
             isInitialized = true;
+            isRunning = true;
             Debug.Log($"[MULTICAST RECEIVER] Multicast receiver initialized on {multicastAddress}:{port}");
+
+            // Start receive thread
+            receiveThread = new Thread(ReceiveThread);
+            receiveThread.IsBackground = true;
+            receiveThread.Start();
         }
         catch (Exception e)
         {
@@ -37,41 +49,80 @@ public class UDP_MulticastReceiver : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void ReceiveThread()
     {
-        if (!isInitialized) return;
+        IPEndPoint remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-        try
+        while (isRunning && client != null)
         {
-            while (client.Available > 0)
+            try
             {
                 byte[] data = client.Receive(ref remoteEndPoint);
                 string message = Encoding.UTF8.GetString(data);
                 
-                // var get time with ms
                 var time = DateTime.Now.ToString("HH:mm:ss.fff");
                 var diff = DateTime.Now - lastReceived;
                 lastReceived = DateTime.Now;
+
+                var logMessage = $"[{time}] Received from {remoteEndPoint}: {message}. Diff: {diff.TotalMilliseconds}ms";
                 
-                Debug.Log($"[${time}] Received from {remoteEndPoint}: {message}. Diff: {diff.TotalMilliseconds}ms");
-                
-                OnMessageReceived.Invoke(message);
+                // Queue the message for processing in Update
+                messageQueue.Enqueue((message, logMessage));
+            }
+            catch (SocketException ex)
+            {
+                // Ignore expected exceptions when closing
+                if (isRunning && ex.SocketErrorCode != SocketError.Interrupted)
+                {
+                    Debug.LogError($"Socket error in receive thread: {ex.Message}");
+                }
+            }
+            catch (Exception e)
+            {
+                if (isRunning)
+                {
+                    Debug.LogError($"Error in receive thread: {e.Message}");
+                }
             }
         }
-        catch (Exception e)
+    }
+
+    private void Update()
+    {
+        // Process any queued messages
+        while (messageQueue.TryDequeue(out var messageData))
         {
-            Debug.LogError($"Error receiving message: {e.Message}");
+            string message = messageData.message;
+            string logMessage = messageData.logMessage;
+            
+            Debug.Log(logMessage);
+            if (optionalDebugText != null) optionalDebugText.text = logMessage;
+            OnMessageReceived.Invoke(message);
         }
     }
 
     private void OnDestroy()
     {
+        // Signal thread to stop
+        isRunning = false;
+
         if (client != null)
         {
             try
             {
+                // Close the client to interrupt any blocking Receive call
                 client.DropMulticastGroup(IPAddress.Parse(multicastAddress));
                 client.Close();
+                
+                // Wait for thread to finish (with timeout)
+                if (receiveThread != null && receiveThread.IsAlive)
+                {
+                    receiveThread.Join(1000);
+                    if (receiveThread.IsAlive)
+                    {
+                        receiveThread.Abort();
+                    }
+                }
             }
             catch (Exception e)
             {

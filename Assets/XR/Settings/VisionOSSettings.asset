@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: VisionOSSettings
   m_EditorClassIdentifier: 
   m_AppMode: 1
-  m_HandsTrackingUsageDescription: 
-  m_WorldSensingUsageDescription: 
+  m_HandsTrackingUsageDescription: Always enable!
+  m_WorldSensingUsageDescription: Always enable!
   m_RuntimeSettings: {fileID: 11400000, guid: 1749f27bb0c7f4a54af72d9a4fcb3750, type: 2}
   m_UpperLimbVisibility: 0
   m_FoveatedRendering: 1
@@ -22,4 +22,4 @@ MonoBehaviour:
   m_RealityKitImmersionStyle: 0
   m_MetalImmersiveOverlays: 0
   m_RealityKitImmersiveOverlays: 0
-  m_IL2CPPLargeExeWorkaround: 0
+  m_IL2CPPLargeExeWorkaround: 1
