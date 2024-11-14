@@ -14,7 +14,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
     public TMP_Text optionalDebugText;
     public float timeToReconnect = 1f;
 
-    public UnityEvent<string> OnMessageReceived = new UnityEvent<string>();
+    public UnityEvent<UpdatePackage> OnMessageReceived = new ();
 
     private UdpClient client;
     private bool isInitialized = false;
@@ -37,25 +37,24 @@ public class UDP_MulticastReceiver : MonoBehaviour
             while (client.Available > 0)
             {
                 byte[] data = client.Receive(ref remoteEndPoint);
-                string message = Encoding.UTF8.GetString(data);
+                var msg = UpdatePackage.FromBytes(data);
                 
-                // var get time with ms
                 var time = DateTime.Now.ToString("HH:mm:ss.fff");
                 var diff = DateTime.Now - lastReceived;
                 lastReceived = DateTime.Now;
 
-                var log = $"[${time}] Received from {remoteEndPoint}: {message}. Diff: {diff.TotalMilliseconds}ms";
+                var log = $"[${time}] Received from {remoteEndPoint}: {msg.ToString()}. Diff: {diff.TotalMilliseconds}ms";
                 Debug.Log(log);
 
-                if (message.Contains("Ping"))
+                if (msg.msgType == MsgType.Ping)
                 {
                     var ip = remoteEndPoint.Address.ToString();
-                    var response = Encoding.UTF8.GetBytes("Pong");
+                    var response = UpdatePackage.CreatePong().ToBytes();
                     client.Send(response, response.Length, new IPEndPoint(IPAddress.Parse(ip), serverPort));
                 }
                     
                 if (optionalDebugText != null) optionalDebugText.text = log;
-                OnMessageReceived.Invoke(message);
+                OnMessageReceived.Invoke(msg);
             }
         }
         catch (Exception e)

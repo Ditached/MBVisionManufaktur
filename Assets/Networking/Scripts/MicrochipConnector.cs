@@ -1,6 +1,7 @@
 using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -16,16 +17,42 @@ public struct EventMessage
 
 public class MicrochipConnector : MonoBehaviour
 {
+    public static float timeSensorStayActive = 1.25f;
+    public static string[] macAdresses = new[]
+    {
+        "38:42:A6:00:05:A8",
+        "38:42:A6:00:05:72",
+        "38:42:A6:00:05:AE",
+        "38:42:A6:00:05:5C"
+    };
+
+    public int index;
+    [Title("References")]
     public UDP_Connector udpConnector;
 
-    public string macAdress = "FF:FF:FF:FF:FF:FF";
-    public bool isAvailable;
+    public ChipState chipState;
+
+    [Title("Microchip readonly info")]
+    [ReadOnly] public string macAdress = "FF:FF:FF:FF:FF:FF";
+    [ReadOnly] public bool isAvailable;
+    [ReadOnly] public bool sensorIsActive;
 
     [HideInInspector] public UnityEvent OnTriggered;
+    
+    private float lastTriggered;
 
     private void Awake()
     {
+        chipState = FindFirstObjectByType<ChipState>();
+        
+        macAdress = macAdresses[index];
         udpConnector.OnMessageReceived.AddListener(OnMessageReceived);
+    }
+
+    private void Update()
+    {
+        if(lastTriggered + timeSensorStayActive < Time.time) sensorIsActive = false;
+        chipState.SetSensor(index, sensorIsActive);
     }
 
     private void OnMessageReceived(string msg)
@@ -48,6 +75,10 @@ public class MicrochipConnector : MonoBehaviour
                 if (json.mac == macAdress)
                 {
                     Debug.Log($"Sensor {json.mac} triggered");
+                    
+                    sensorIsActive = true;
+                    lastTriggered = Time.time;
+                    
                     OnTriggered.Invoke();
                 }
             }
@@ -56,5 +87,10 @@ public class MicrochipConnector : MonoBehaviour
         {
             Debug.LogError(e);
         }
+    }
+
+    private void OnValidate()
+    {
+        macAdress = macAdresses[index];
     }
 }

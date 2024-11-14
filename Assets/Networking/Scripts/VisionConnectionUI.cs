@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class VisionConnectionUI : MonoBehaviour
@@ -9,7 +10,7 @@ public class VisionConnectionUI : MonoBehaviour
     public static float maxPongTimeLost = 5f;
     
     public string ip;
-    public UDP_VisionConnector udpVisionConnector;
+    [FormerlySerializedAs("udpVisionConnector")] public UDP_VisionPingReceiver udpVisionPingReceiver;
     
     public Image visionIcon;
     public TMP_Text ipText;
@@ -18,7 +19,7 @@ public class VisionConnectionUI : MonoBehaviour
     {
         ipText.text = ip;
         
-        var diff = DateTime.Now - udpVisionConnector.GetLastPing(ip);
+        var diff = DateTime.Now - udpVisionPingReceiver.GetLastPing(ip);
         
         if(diff.TotalSeconds > maxPongTimeLost)
         {

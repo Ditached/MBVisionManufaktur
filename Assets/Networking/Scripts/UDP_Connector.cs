@@ -19,6 +19,7 @@ public class UDP_Connector : MonoBehaviour
     [HideInInspector]
     public UnityEvent<string> OnMessageReceived;
     public UnityEvent<string, IPEndPoint> OnMessageReceivedWithEndPoint;
+    public UnityEvent<byte[], IPEndPoint> OnBytesReceivedWithEndPoint;
     
     void Awake()
     {
@@ -55,6 +56,7 @@ public class UDP_Connector : MonoBehaviour
                 string message = Encoding.UTF8.GetString(data);
                 Debug.Log($"[{Time.realtimeSinceStartup}] Received: {message} from {endPoint}");
                 
+                OnBytesReceivedWithEndPoint.Invoke(data, endPoint);
                 OnMessageReceived.Invoke(message);
                 OnMessageReceivedWithEndPoint.Invoke(message, endPoint);
             }
