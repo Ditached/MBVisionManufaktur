@@ -28,7 +28,7 @@ MonoBehaviour:
   m_DisabledTrackers: []
   m_AdditionalTextureFormats: 
   m_DefaultVolumeCameraWindowConfiguration: {fileID: 11400000, guid: 780e9fdf3d43042578153145466820cf, type: 2}
-  m_AutoCreateVolumeCamera: 1
+  m_AutoCreateVolumeCamera: 0
   m_TransmitDebugInfo: 0
   m_EnableFallbackShaderConversion: 1
   m_EnableRuntimeValidation: 0
@@ -56,11 +56,11 @@ MonoBehaviour:
       top: 1
       bottom: -1.19175
   m_MaterialSwapSets: []
-  m_EnablePolySpatialRaycaster: 1
+  m_EnablePolySpatialRaycaster: 0
   m_SelectedValidationType: 0
   m_ShowWarningsForShaderGraphsInPackages: 1
   m_MinifyShaderGraphNodeNames: 1
-  m_PreviewUseBackgroundColor: 1
+  m_PreviewUseBackgroundColor: 0
   m_PreviewBackgroundColor: {r: 0.192, g: 0.301, b: 0.474, a: 1}
   m_RuntimeMode: 0
   m_EnableTransformVerification: 0

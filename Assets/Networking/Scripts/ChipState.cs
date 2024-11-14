@@ -17,6 +17,50 @@ public class ChipState : MonoBehaviour
             chipState &= (ushort)~(1 << sensorIndex);
     }
     
+    public int GetFirstActiveSensor()
+    {
+        for (int i = 0; i < 16; i++)
+        {
+            if (GetSensor(i))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    
+    public bool IsAnySensorActive()
+    {
+        return chipState != 0;
+    }
+    
+    public int[] GetActiveSensors()
+    {
+        int[] activeSensors = new int[16];
+        int activeSensorsCount = 0;
+        
+        for (int i = 0; i < 16; i++)
+        {
+            if (GetSensor(i))
+            {
+                activeSensors[activeSensorsCount] = i;
+                activeSensorsCount++;
+            }
+        }
+        Array.Resize(ref activeSensors, activeSensorsCount);
+        return activeSensors;
+    }
+    
+    public bool AreMultipleSensorsActive()
+    {
+        return chipState != 0 && (chipState & (chipState - 1)) != 0;
+    }
+    
+    public void SetOnlyThisSensor(int sensorIndex)
+    {
+        chipState = (ushort)(1 << sensorIndex);
+    }
+    
     public bool GetSensor(int sensorIndex)
     {
         return (chipState & (1 << sensorIndex)) != 0;

@@ -36,6 +36,8 @@ public class UDP_ChipSetup : MonoBehaviour
     {
         bool allChipsReady = false;
         
+        yield return new WaitForSeconds(1f);
+        
         chips = new List<MicrochipConnector>(
             FindObjectsByType<MicrochipConnector>(FindObjectsInactive.Include, FindObjectsSortMode.None));
 

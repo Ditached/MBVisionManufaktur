@@ -6,9 +6,13 @@ using UnityEngine;
 public class UDP_MulticastSender : MonoBehaviour
 {
     public float pingInterval = 1f;
+    public float chipStateInterval = 0.25f;
+    
     public bool multicastLoopback = true;
     public int port = 62111; // Using a safer high port number
     public string multicastAddress = "239.255.255.252";
+    
+    public ChipState chipState;
 
     private UdpClient client;
     private IPEndPoint multicastEndPoint;
@@ -28,6 +32,7 @@ public class UDP_MulticastSender : MonoBehaviour
             Debug.Log($"[MULTICAST SENDER] Multicast sender initialized on {multicastAddress}:{port}");
 
             InvokeRepeating(nameof(SendPing), 0, pingInterval);
+            InvokeRepeating(nameof(SendChipState), 0, chipStateInterval);
         }
         catch (Exception e)
         {
@@ -40,6 +45,12 @@ public class UDP_MulticastSender : MonoBehaviour
         var package = UpdatePackage.CreatePing();
         SendUpdatePackage(package);
     }
+    
+    public void SendChipState()
+    {
+        var package = UpdatePackage.CreateChipStatePackage(chipState.chipState);
+        SendUpdatePackage(package);
+    }
 
     public void SendUpdatePackage(UpdatePackage updatePackage)
     {
@@ -47,6 +58,7 @@ public class UDP_MulticastSender : MonoBehaviour
         {
             var bytes = updatePackage.ToBytes();
             client.Send(bytes, bytes.Length, multicastEndPoint);
+            Debug.Log($"[MULTICAST SENDER] Sent update package: {updatePackage.ToString()}");
         } catch (Exception e)
         {
             Debug.LogError($"Failed to send update package: {e.Message}");

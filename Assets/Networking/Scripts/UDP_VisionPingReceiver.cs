@@ -25,6 +25,7 @@ public class UDP_VisionPingReceiver : MonoBehaviour
 
             if (package.msgType == MsgType.Pong)
             {
+                Debug.Log($"Received Pong from {endpoint.Address}");
                 foreach (var visionIP in _visionIPs)
                 {
                     if (visionIP.ip == endpoint.Address.ToString())

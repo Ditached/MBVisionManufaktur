@@ -17,16 +17,11 @@ public struct EventMessage
 
 public class MicrochipConnector : MonoBehaviour
 {
+    public LackConfigCollection lackConfigCollection;
     public static float timeSensorStayActive = 1.25f;
-    public static string[] macAdresses = new[]
-    {
-        "38:42:A6:00:05:A8",
-        "38:42:A6:00:05:72",
-        "38:42:A6:00:05:AE",
-        "38:42:A6:00:05:5C"
-    };
 
     public int index;
+    
     [Title("References")]
     public UDP_Connector udpConnector;
 
@@ -41,11 +36,12 @@ public class MicrochipConnector : MonoBehaviour
     
     private float lastTriggered;
 
-    private void Awake()
+    private void Start()
     {
+        udpConnector = FindFirstObjectByType<UDP_Connector>();
         chipState = FindFirstObjectByType<ChipState>();
-        
-        macAdress = macAdresses[index];
+
+        macAdress = lackConfigCollection.lackConfigs[index].macAdress;
         udpConnector.OnMessageReceived.AddListener(OnMessageReceived);
     }
 
@@ -87,10 +83,5 @@ public class MicrochipConnector : MonoBehaviour
         {
             Debug.LogError(e);
         }
-    }
-
-    private void OnValidate()
-    {
-        macAdress = macAdresses[index];
     }
 }

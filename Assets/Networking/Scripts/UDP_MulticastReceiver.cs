@@ -8,10 +8,15 @@ using UnityEngine.Events;
 
 public class UDP_MulticastReceiver : MonoBehaviour
 {
+    public ChipState chipState;
+    public uint udpIdWindowSize = 50;
+    
     public string multicastAddress = "239.255.255.252";
     public int port = 62111;
     public int serverPort = 6457;
+    
     public TMP_Text optionalDebugText;
+    
     public float timeToReconnect = 1f;
 
     public UnityEvent<UpdatePackage> OnMessageReceived = new ();
@@ -21,6 +26,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
     private IPEndPoint remoteEndPoint;
     
     private DateTime lastReceived;
+    private uint lastMsgId;
     
 
     private void Awake()
@@ -51,6 +57,20 @@ public class UDP_MulticastReceiver : MonoBehaviour
                     var ip = remoteEndPoint.Address.ToString();
                     var response = UpdatePackage.CreatePong().ToBytes();
                     client.Send(response, response.Length, new IPEndPoint(IPAddress.Parse(ip), serverPort));
+                } else if (msg.msgType == MsgType.Update)
+                {
+                    var currMsgID = msg.id;
+                    var diffId = Math.Abs(currMsgID - lastMsgId);
+                    
+                    if(diffId < udpIdWindowSize && currMsgID <= lastMsgId)
+                    {
+                        Debug.LogWarning($"Received old message: {msg.ToString()}");
+                        continue;
+                    }
+                    
+                    lastMsgId = currMsgID;
+                    chipState.chipState = msg.chipState;
+                    Debug.Log($"Received update package: {msg.ToString()}");
                 }
                     
                 if (optionalDebugText != null) optionalDebugText.text = log;

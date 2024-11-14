@@ -12,7 +12,7 @@ EditorBuildSettings:
     UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 46a171e1697aa4ddfa93817e9c258114, type: 2}
     UnityEditor.XR.VisionOS.VisionOSSettings: {fileID: 11400000, guid: 15b5b6cd8e60447e9af42b51b2cdbae7, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 490f30f928a9e48ca9b90e447524da8e, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 31a0e420a04b44544b387e02e9b847b8, type: 3}
     com.unity.polyspatial.xr.xr_settings: {fileID: 11400000, guid: 7f2ea44c7b1c44e76928a234727398b1, type: 2}
     com.unity.xr.arfoundation.simulation_settings: {fileID: 11400000, guid: 8d7416e788b2c445698ffcb0348ab13f, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 5e393e60a2de046fc8e93b2cd038d525, type: 2}

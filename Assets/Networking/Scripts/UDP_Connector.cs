@@ -16,10 +16,9 @@ public class UDP_Connector : MonoBehaviour
     public string targetIP = "192.168.1.255";
     public ushort targetPort = 6455;
 
-    [HideInInspector]
-    public UnityEvent<string> OnMessageReceived;
-    public UnityEvent<string, IPEndPoint> OnMessageReceivedWithEndPoint;
-    public UnityEvent<byte[], IPEndPoint> OnBytesReceivedWithEndPoint;
+    [HideInInspector] public UnityEvent<string> OnMessageReceived;
+    [HideInInspector] public UnityEvent<string, IPEndPoint> OnMessageReceivedWithEndPoint;
+    [HideInInspector] public UnityEvent<byte[], IPEndPoint> OnBytesReceivedWithEndPoint;
     
     void Awake()
     {
@@ -43,6 +42,14 @@ public class UDP_Connector : MonoBehaviour
             Debug.LogError($"Error sending message: {e.Message}");
         }
     }
+    
+    public void SendGlowMessage(string macAdress, bool glow)
+    {
+        int glowInt = glow ? 1 : 0;
+        var msg = "{\"WDMODE\":\"" + $"{glowInt}\",\"MACS\":[\"{macAdress}\"]" + "}";
+        
+        SendUdpMsg(msg);
+    }
 
     void Update()
     {
@@ -54,7 +61,7 @@ public class UDP_Connector : MonoBehaviour
                 IPEndPoint endPoint = new IPEndPoint(IPAddress.Any, 0);
                 byte[] data = udpClient.Receive(ref endPoint);
                 string message = Encoding.UTF8.GetString(data);
-                Debug.Log($"[{Time.realtimeSinceStartup}] Received: {message} from {endPoint}");
+                Debug.Log($"[{Time.realtimeSinceStartup}] Received from {endPoint} - size {data.Length}: {message}");
                 
                 OnBytesReceivedWithEndPoint.Invoke(data, endPoint);
                 OnMessageReceived.Invoke(message);

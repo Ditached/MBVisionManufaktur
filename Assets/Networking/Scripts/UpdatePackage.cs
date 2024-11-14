@@ -17,10 +17,10 @@ public enum MsgType : byte
 public struct UpdatePackage
 {
     public static uint nextId = 0;
-    
-    [FormerlySerializedAs("messageType")] public MsgType msgType;  // 1 byte
-    public uint id;                  // 4 bytes
-    public ushort chipState;         // 2 bytes
+
+    [FormerlySerializedAs("messageType")] public MsgType msgType; // 1 byte
+    public uint id; // 4 bytes
+    public ushort chipState; // 2 bytes
 
     public static UpdatePackage CreatePong()
     {
@@ -31,7 +31,7 @@ public struct UpdatePackage
             chipState = 0
         };
     }
-    
+
     public static UpdatePackage CreatePing()
     {
         return new UpdatePackage
@@ -41,8 +41,8 @@ public struct UpdatePackage
             chipState = 0
         };
     }
-    
-    public static UpdatePackage CreateUpdate(ushort chipState)
+
+    public static UpdatePackage CreateChipStatePackage(ushort chipState)
     {
         return new UpdatePackage
         {
@@ -51,14 +51,14 @@ public struct UpdatePackage
             chipState = chipState
         };
     }
-    
+
     // Helper method to create bytes
     public byte[] ToBytes()
     {
         int size = Marshal.SizeOf(this);
         byte[] arr = new byte[size];
         IntPtr ptr = Marshal.AllocHGlobal(size);
-        
+
         try
         {
             Marshal.StructureToPtr(this, ptr, true);
@@ -81,7 +81,7 @@ public struct UpdatePackage
         try
         {
             Marshal.Copy(arr, 0, ptr, size);
-            str = (UpdatePackage)Marshal.PtrToStructure(ptr, typeof(UpdatePackage));
+            str = (UpdatePackage) Marshal.PtrToStructure(ptr, typeof(UpdatePackage));
             return str;
         }
         finally
@@ -90,10 +90,16 @@ public struct UpdatePackage
         }
     }
 
-    public override string ToString()
+    // Get chipState as binary string
+    public string GetChipStateString()
     {
-        return $"[{msgType}] ID={id}, ChipState=0x{chipState:X4}";
+        // Convert to binary and pad with zeros to 16 bits
+        return Convert.ToString(chipState, 2).PadLeft(16, '0');
     }
 
-  
+    public override string ToString()
+    {
+        // Shows both binary and hex representation
+        return $"Type={msgType} ID={id}, ChipState={GetChipStateString()}";
+    }
 }
