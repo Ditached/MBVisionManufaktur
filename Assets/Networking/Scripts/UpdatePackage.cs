@@ -9,46 +9,59 @@ public enum MsgType : byte
     Ping = 0,
     Update = 1,
     Pong = 2,
-    Reserved2 = 3
+    Reserved = 3,
 }
+
+public enum AppState : byte
+{
+    Waiting = 0,
+    Running = 1,
+}
+
 
 [Serializable]
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct UpdatePackage
 {
+    public static AppState globalAppState = AppState.Waiting;
+    public static ushort globalChipState = 0;
     public static uint nextId = 0;
 
-    [FormerlySerializedAs("messageType")] public MsgType msgType; // 1 byte
+    public MsgType msgType; // 1 byte
+    public AppState appState; // 1 byte
     public uint id; // 4 bytes
     public ushort chipState; // 2 bytes
-
+    
     public static UpdatePackage CreatePong()
     {
         return new UpdatePackage()
         {
             msgType = MsgType.Pong,
             id = nextId++,
-            chipState = 0
+            chipState = globalChipState,
+            appState = globalAppState
         };
     }
-
+    
     public static UpdatePackage CreatePing()
     {
         return new UpdatePackage
         {
             msgType = MsgType.Ping,
             id = nextId++,
-            chipState = 0
+            chipState = globalChipState,
+            appState = globalAppState
         };
     }
 
-    public static UpdatePackage CreateChipStatePackage(ushort chipState)
+    public static UpdatePackage CreateChipStatePackage()
     {
         return new UpdatePackage
         {
             msgType = MsgType.Update,
             id = nextId++,
-            chipState = chipState
+            chipState = globalChipState,
+            appState = globalAppState
         };
     }
 
@@ -93,13 +106,11 @@ public struct UpdatePackage
     // Get chipState as binary string
     public string GetChipStateString()
     {
-        // Convert to binary and pad with zeros to 16 bits
         return Convert.ToString(chipState, 2).PadLeft(16, '0');
     }
 
     public override string ToString()
     {
-        // Shows both binary and hex representation
-        return $"Type={msgType} ID={id}, ChipState={GetChipStateString()}";
+        return $"Type={msgType}, AppState={appState}, ID={id}, ChipState={GetChipStateString()}";
     }
 }

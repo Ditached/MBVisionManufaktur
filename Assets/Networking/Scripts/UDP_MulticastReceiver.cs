@@ -10,24 +10,24 @@ public class UDP_MulticastReceiver : MonoBehaviour
 {
     public ChipState chipState;
     public uint udpIdWindowSize = 50;
-    
+
     public string multicastAddress = "239.255.255.252";
     public int port = 62111;
     public int serverPort = 6457;
-    
+
     public TMP_Text optionalDebugText;
-    
+
     public float timeToReconnect = 1f;
 
-    public UnityEvent<UpdatePackage> OnMessageReceived = new ();
+    [HideInInspector] public UnityEvent<UpdatePackage> OnMessageReceived = new();
 
     private UdpClient client;
     private bool isInitialized = false;
     private IPEndPoint remoteEndPoint;
-    
+
     private DateTime lastReceived;
     private uint lastMsgId;
-    
+
 
     private void Awake()
     {
@@ -37,42 +37,43 @@ public class UDP_MulticastReceiver : MonoBehaviour
     private void Update()
     {
         if (!isInitialized) return;
-        
+
         try
         {
             while (client.Available > 0)
             {
                 byte[] data = client.Receive(ref remoteEndPoint);
                 var msg = UpdatePackage.FromBytes(data);
-                
+
                 var time = DateTime.Now.ToString("HH:mm:ss.fff");
                 var diff = DateTime.Now - lastReceived;
                 lastReceived = DateTime.Now;
 
                 var log = $"[${time}] Received from {remoteEndPoint}: {msg.ToString()}. Diff: {diff.TotalMilliseconds}ms";
                 Debug.Log(log);
+                
+                var currMsgID = msg.id;
+                var diffId = Math.Abs(currMsgID - lastMsgId);
+
+                if (diffId < udpIdWindowSize && currMsgID <= lastMsgId)
+                {
+                    Debug.LogWarning($"Received old message: {msg.ToString()}");
+                    continue;
+                }
+
+                lastMsgId = currMsgID;
+                
+                chipState.chipState = msg.chipState;
+                UpdatePackage.globalAppState = msg.appState;
+                UpdatePackage.globalChipState = msg.chipState;
 
                 if (msg.msgType == MsgType.Ping)
                 {
                     var ip = remoteEndPoint.Address.ToString();
                     var response = UpdatePackage.CreatePong().ToBytes();
                     client.Send(response, response.Length, new IPEndPoint(IPAddress.Parse(ip), serverPort));
-                } else if (msg.msgType == MsgType.Update)
-                {
-                    var currMsgID = msg.id;
-                    var diffId = Math.Abs(currMsgID - lastMsgId);
-                    
-                    if(diffId < udpIdWindowSize && currMsgID <= lastMsgId)
-                    {
-                        Debug.LogWarning($"Received old message: {msg.ToString()}");
-                        continue;
-                    }
-                    
-                    lastMsgId = currMsgID;
-                    chipState.chipState = msg.chipState;
-                    Debug.Log($"Received update package: {msg.ToString()}");
                 }
-                    
+                
                 if (optionalDebugText != null) optionalDebugText.text = log;
                 OnMessageReceived.Invoke(msg);
             }
@@ -82,7 +83,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
             Debug.LogError($"Error receiving message: {e.Message}");
         }
 
-        
+
         if (lastReceived.AddSeconds(timeToReconnect) < DateTime.Now)
         {
             lastReceived = DateTime.Now;
@@ -93,7 +94,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
     private void CreateConnection()
     {
         TryDestroyConnection();
-        
+
         try
         {
             client = new UdpClient();
@@ -110,7 +111,6 @@ public class UDP_MulticastReceiver : MonoBehaviour
         {
             Debug.LogError($"Failed to initialize multicast receiver: {e.Message}");
         }
-        
     }
 
     private void OnDestroy()
