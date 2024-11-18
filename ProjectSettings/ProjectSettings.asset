@@ -143,6 +143,10 @@ PlayerSettings:
   bundleVersion: 0.1.0
   preloadedAssets:
   - {fileID: 11400000, guid: 490f30f928a9e48ca9b90e447524da8e, type: 2}
+  - {fileID: -944628639613478452, guid: 31a0e420a04b44544b387e02e9b847b8, type: 3}
+  - {fileID: 11400000, guid: 8d7416e788b2c445698ffcb0348ab13f, type: 2}
+  - {fileID: 11400000, guid: 1749f27bb0c7f4a54af72d9a4fcb3750, type: 2}
+  - {fileID: 4712989464912125726, guid: 5e393e60a2de046fc8e93b2cd038d525, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -948,7 +952,7 @@ PlayerSettings:
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
-  platformRequiresReadableAssets: 0
+  platformRequiresReadableAssets: 1
   virtualTexturingSupportEnabled: 0
   insecureHttpOption: 2
   androidVulkanDenyFilterList: []
