@@ -26,7 +26,7 @@ namespace TinyFins.Hand
 
         private void OnEnable()
         {
-            var handManagers = FindObjectsOfType<HandManager>();
+            var handManagers = FindObjectsByType<HandManager>(FindObjectsSortMode.None);
 
             foreach (var handManager in handManagers)
             {
