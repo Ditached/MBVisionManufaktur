@@ -828,7 +828,7 @@ PrefabInstance:
     - target: {fileID: 8397138613092185667, guid: 2dbe46d3cd16c48c39d3053dda3adfea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: f9bf78cb03c24490e903df2e2cacbfd9, type: 2}
+      objectReference: {fileID: 2100000, guid: 2184b66c8a97d4b9d9d8a0176c719da6, type: 2}
     - target: {fileID: 8435695655935123927, guid: 2dbe46d3cd16c48c39d3053dda3adfea, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1420,7 +1420,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &803047647
 Animator:
   serializedVersion: 7
@@ -1477,8 +1477,8 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10.15
-  m_Range: 5.03
+  m_Intensity: 1
+  m_Range: 17.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -1540,7 +1540,7 @@ Transform:
   m_GameObject: {fileID: 803047646}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00630825, y: 2.27, z: -3.08}
+  m_LocalPosition: {x: -0.00630825, y: 1.45, z: 2.085}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
