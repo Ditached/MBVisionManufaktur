@@ -52,12 +52,13 @@ public struct HalDeactivatedMessage
 public struct StatusMessage
 {
     public string mac;
+    public float vbat;
 }
 
 public class MicrochipConnector : MonoBehaviour
 {
     public LackConfigCollection lackConfigCollection;
-    public static float timeSensorStayActive = 1.25f;
+    public static float timeSensorStayActive = 10f; //This is a safety timeout, e.g. sensor is over the magnet but battery runs out
     public static float timeChipStaysConnected = 20f;
 
     public int index;
@@ -75,10 +76,10 @@ public class MicrochipConnector : MonoBehaviour
     [ReadOnly] public float lastMessageReceived;
     [ReadOnly] public float timeSinceLastMessage;
     [ReadOnly] public string firmwareVersion = "V0.0";
+    [ReadOnly] public float timeSinceLastHalStatus;
+    [ReadOnly] public float batteryStatus;
 
-    [HideInInspector] public UnityEvent OnTriggered;
-
-    private float lastTriggered;
+    private float lastHalStatusReceived;
 
     private void Start()
     {
@@ -92,10 +93,11 @@ public class MicrochipConnector : MonoBehaviour
     private void Update()
     {
         // TODO: As a safety measure implement a timeout ontop, maybe 3 seconds or something relativly high
-        //if (lastTriggered + timeSensorStayActive < Time.time) sensorIsActive = false;
+        if (sensorIsActive && lastHalStatusReceived + timeSensorStayActive < Time.time) sensorIsActive = false;
         chipState.SetSensor(index, sensorIsActive);
 
         timeSinceLastMessage = Time.time - lastMessageReceived;
+        timeSinceLastHalStatus = Time.time - lastHalStatusReceived;
     }
 
     private void OnMessageReceived(string msg, IPEndPoint endPoint)
@@ -114,15 +116,6 @@ public class MicrochipConnector : MonoBehaviour
                     firmwareVersion = json.ver;
                 }
             }
-            else if (msg.Contains("status"))
-            {
-                var json = JsonConvert.DeserializeObject<StatusMessage>(msg);
-
-                if (json.mac == macAdress)
-                {
-                    lastMessageReceived = Time.time;
-                }
-            }
             else if (msg.Contains("ping"))
             {
                 var json = JsonConvert.DeserializeObject<PingMessage>(msg);
@@ -134,18 +127,12 @@ public class MicrochipConnector : MonoBehaviour
             }
             else if (msg.Contains("hal status"))
             {
-                return;
                 var json = JsonConvert.DeserializeObject<HalStatusMsg>(msg);
 
                 if (json.mac == macAdress)
                 {
                     Debug.Log($"Sensor {json.mac} triggered. WD: {json.wd}, Conf: {json.conf}, Drawer: {json.drawer}");
-
-                    sensorIsActive = true;
-                    lastTriggered = Time.time;
-                    lastMessageReceived = Time.time;
-
-                    OnTriggered.Invoke();
+                    lastHalStatusReceived = Time.time;
                 }
             }
             else if (msg.Contains("hal activated"))
@@ -155,8 +142,8 @@ public class MicrochipConnector : MonoBehaviour
                 if (json.mac == macAdress)
                 {
                     Debug.Log($"Sensor {json.mac} activated. WD: {json.wd}, Conf: {json.conf}, Drawer: {json.drawer}");
+                    lastHalStatusReceived = Time.time;
                     sensorIsActive = true;
-                    OnTriggered.Invoke();
                 }
             }
             else if(msg.Contains("hal deactivated"))
@@ -167,7 +154,15 @@ public class MicrochipConnector : MonoBehaviour
                 {
                     Debug.Log($"Sensor {json.mac} deactivated. WD: {json.wd}, Conf: {json.conf}, Drawer: {json.drawer}");
                     sensorIsActive = false;
-                    OnTriggered.Invoke();
+                }
+            } else if (msg.Contains("status") && msg.Contains("vbat"))
+            {
+                var json = JsonConvert.DeserializeObject<StatusMessage>(msg);
+
+                if (json.mac == macAdress)
+                {
+                    lastMessageReceived = Time.time;
+                    batteryStatus = json.vbat;
                 }
             }
         }

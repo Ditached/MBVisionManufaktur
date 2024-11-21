@@ -17,6 +17,11 @@ public class ChipMessageGenerator
     {
         return "{\"PING\":\"1\",\"MACS\":[\"FF:FF:FF:FF:FF:FF\"]}";
     }
+
+    public static string GenerateStatusPingMessage()
+    {
+        return "{\"STATUS\":\"1\",\"MACS\":[\"FF:FF:FF:FF:FF:FF\"]}";
+    }
 }
 
 public enum PingStrategy
@@ -33,6 +38,7 @@ public class UDP_ChipSetup : MonoBehaviour
     public float interval = 0.5f;
     public float intervalAfterSuccess = 20f;
     public float pingInterval = 2f;
+    public float statusPingInterval = 30f;
     
     [Title("Setup Message")]
     public int timeStart = 100;
@@ -45,6 +51,11 @@ public class UDP_ChipSetup : MonoBehaviour
     public void SendSetupMessage()
     {
         udpConnector.SendUdpMsg(ChipMessageGenerator.GenerateSetupMessage(timeStart, timeEnd));
+    }
+
+    public void SendStatusPing()
+    {
+        udpConnector.SendUdpMsg(ChipMessageGenerator.GenerateStatusPingMessage());
     }
     
     public void SendPingMessage()
@@ -65,6 +76,17 @@ public class UDP_ChipSetup : MonoBehaviour
     private void Awake()
     {
         StartCoroutine(PingCoroutine());
+        StartCoroutine(StatusPingCoroutine());
+    }
+    
+    private IEnumerator StatusPingCoroutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            SendStatusPing();
+            yield return new WaitForSeconds(statusPingInterval);
+        }
     }
     
     private IEnumerator PingCoroutine()

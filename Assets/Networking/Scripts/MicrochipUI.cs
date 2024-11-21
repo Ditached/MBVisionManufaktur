@@ -12,11 +12,14 @@ public class MicrochipUI : MonoBehaviour
     public Image sensorActive;
     public TMP_Text macAdress;
     public TMP_Text connectionTime;
+    public TMP_Text totalTimeConnected;
     public TMP_Text ipAdress;
     public TMP_Text version;
+    public TMP_Text batteryText;
 
     private bool _sensorActive;
     private MicrochipConnector _microchipConnector;
+    private float totalTimeConnectedValueInSeconds;
 
     private void Start()
     {
@@ -42,6 +45,19 @@ public class MicrochipUI : MonoBehaviour
                 : Color.green
             : Color.red;
 
+        totalTimeConnected.enabled = _microchipConnector.isAvailable;
+        
+        if (_microchipConnector.isAvailable)
+        {
+            if (_microchipConnector.timeSinceLastMessage < MicrochipConnector.timeChipStaysConnected)
+            {
+                totalTimeConnectedValueInSeconds += Time.deltaTime;
+            }
+            
+            TimeSpan timeSpan = TimeSpan.FromSeconds(totalTimeConnectedValueInSeconds);
+            totalTimeConnected.text = timeSpan.ToString(@"hh\:mm\:ss");
+        }
+
         sensorActive.color = _microchipConnector.sensorIsActive ? Color.green : new Color(0f, 0f, 0f, 0.02f);
         
         connectionTime.text = _microchipConnector.isAvailable
@@ -50,6 +66,7 @@ public class MicrochipUI : MonoBehaviour
         
         ipAdress.text = _microchipConnector.ipAdress;
         version.text = _microchipConnector.firmwareVersion;
+        batteryText.text = _microchipConnector.batteryStatus.ToString("F2");
         
         if (_microchipConnector.firmwareVersion == "") version.text = "V0.0";
     }
