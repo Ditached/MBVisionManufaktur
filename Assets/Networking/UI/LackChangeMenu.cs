@@ -51,6 +51,7 @@ public class LackChangeMenu : MonoBehaviour
         targetLack.macAdress = selectedMacAdress;
         
         Hide();
+        globalConfig.OnLackConfigChanged.Invoke();
     }
 
     public void Hide()

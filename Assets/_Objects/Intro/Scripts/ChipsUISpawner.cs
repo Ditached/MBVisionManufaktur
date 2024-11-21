@@ -14,7 +14,7 @@ public class ChipsUISpawner : MonoBehaviour
             
             var microchipUI = Instantiate(microchipUIPrefab, transform);
             microchipUI.GetComponent<MicrochipConnector>().lackConfigCollection = lackConfigCollection;
-            microchipUI.GetComponent<MicrochipConnector>().index = index;
+            microchipUI.GetComponent<MicrochipConnector>().macAdress = lackConfig.macAdress;
         }
     }
 }

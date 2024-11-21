@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -61,8 +62,6 @@ public class MicrochipConnector : MonoBehaviour
     public static float timeSensorStayActive = 10f; //This is a safety timeout, e.g. sensor is over the magnet but battery runs out
     public static float timeChipStaysConnected = 20f;
 
-    public int index;
-
     [Title("References")] public UDP_Connector udpConnector;
 
     public ChipState chipState;
@@ -80,14 +79,42 @@ public class MicrochipConnector : MonoBehaviour
     [ReadOnly] public float batteryStatus;
 
     private float lastHalStatusReceived;
+    
+    private int index;
 
     private void Start()
     {
         udpConnector = FindFirstObjectByType<UDP_Connector>();
         chipState = FindFirstObjectByType<ChipState>();
 
-        macAdress = lackConfigCollection.lackConfigs[index].macAdress;
+        GetIndexBasedOnMac();
+        
         udpConnector.OnMessageReceivedWithEndPoint.AddListener(OnMessageReceived);
+        lackConfigCollection.OnLackConfigChanged.AddListener(OnLackConfigChanged);
+    }
+
+    private void GetIndexBasedOnMac()
+    {
+        for (var i = 0; i < lackConfigCollection.lackConfigs.Length; i++)
+        {
+            if(lackConfigCollection.lackConfigs[i].macAdress == macAdress)
+            {
+                index = i;
+                break;
+            }
+        }
+    }
+
+    private void OnLackConfigChanged()
+    {
+        var prevIndex = index;
+        
+        GetIndexBasedOnMac();
+        
+        if (prevIndex != index)
+        {
+            Debug.Log($"Index changed from {prevIndex} to {index}");
+        }
     }
 
     public string GetName()
@@ -104,6 +131,7 @@ public class MicrochipConnector : MonoBehaviour
 
     private void Update()
     {
+        
         // TODO: As a safety measure implement a timeout ontop, maybe 3 seconds or something relativly high
         if (sensorIsActive && lastHalStatusReceived + timeSensorStayActive < Time.time) sensorIsActive = false;
         chipState.SetSensor(index, sensorIsActive);

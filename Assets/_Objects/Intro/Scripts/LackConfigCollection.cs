@@ -1,5 +1,9 @@
 using System;
+using System.IO;
+using Newtonsoft.Json;
+using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class LackConfig
@@ -15,5 +19,9 @@ public class LackConfig
 [CreateAssetMenu(fileName = "LackConfig", menuName = "Manufaktur/LackConfig", order = 0)]
 public class LackConfigCollection : ScriptableObject
 {
+    
+    [HideInInspector]
+    public UnityEvent OnLackConfigChanged;
     public LackConfig[] lackConfigs;
+    
 }

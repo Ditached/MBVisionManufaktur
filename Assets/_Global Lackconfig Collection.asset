@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94f942069943bebccfd3985555d04f, type: 3}
   m_Name: _Global Lackconfig Collection
   m_EditorClassIdentifier: 
+  OnLackConfigChanged:
+    m_PersistentCalls:
+      m_Calls: []
   lackConfigs:
   - name: Ireland Mid Green Magno
     macAdress: 38:42:A6:00:05:A8
@@ -89,27 +92,27 @@ MonoBehaviour:
     mainColor: {r: 0.7058824, g: 0.7294118, b: 0.72156864, a: 1}
     isUnassigned: 0
   - name: 
-    macAdress: 00:00:00:00:00:00
+    macAdress: 00:00:00:00:00:EE
     material: {fileID: 0}
     mainColor: {r: 0, g: 0, b: 0, a: 0}
     isUnassigned: 1
   - name: 
-    macAdress: 00:00:00:00:00:00
+    macAdress: 00:00:00:00:00:BB
     material: {fileID: 0}
     mainColor: {r: 0, g: 0, b: 0, a: 0}
     isUnassigned: 1
   - name: 
-    macAdress: 00:00:00:00:00:00
+    macAdress: 00:00:00:00:00:01
     material: {fileID: 0}
     mainColor: {r: 0, g: 0, b: 0, a: 0}
     isUnassigned: 1
   - name: 
-    macAdress: 00:00:00:00:00:00
+    macAdress: 00:00:00:00:00:CE
     material: {fileID: 0}
     mainColor: {r: 0, g: 0, b: 0, a: 0}
     isUnassigned: 1
   - name: 
-    macAdress: 00:00:00:00:00:00
+    macAdress: 00:00:00:00:00:DF
     material: {fileID: 0}
     mainColor: {r: 0, g: 0, b: 0, a: 0}
     isUnassigned: 1
