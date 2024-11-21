@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using UnityEngine;
@@ -16,7 +17,6 @@ public class UDP_MulticastSender : MonoBehaviour
 
     private UdpClient client;
     private IPEndPoint multicastEndPoint;
-
     private long count;
 
     private void Awake()
@@ -48,7 +48,7 @@ public class UDP_MulticastSender : MonoBehaviour
     
     public void SendChipState()
     {
-        var package = UpdatePackage.CreateChipStatePackage(chipState.chipState);
+        var package = UpdatePackage.CreateChipStatePackage();
         SendUpdatePackage(package);
     }
 

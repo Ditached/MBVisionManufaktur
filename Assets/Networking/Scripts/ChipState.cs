@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ChipState : MonoBehaviour
 {
+    public bool updateGlobalState;
+    
     public ushort chipState;
     public string chipStateString;
     public TMP_Text chipStateText;
@@ -78,6 +80,8 @@ public class ChipState : MonoBehaviour
 
     private void Update()
     {
+        UpdatePackage.globalChipState = chipState;
+        
         chipStateString = GetBinaryString();
         chipStateText.text = chipStateString;
     }
