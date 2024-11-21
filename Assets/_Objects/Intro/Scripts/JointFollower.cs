@@ -8,6 +8,7 @@ namespace TinyFins.Hand
 {
     public class JointFollower : MonoBehaviour
     {
+        public Transform handOnPc;
         public bool teleportOnFirstFrame = false;
         public bool lerp = false;
 
@@ -40,6 +41,13 @@ namespace TinyFins.Hand
 
         void Update()
         {
+            if(Application.isEditor && handOnPc != null)
+            {
+                transform.position = handOnPc.position;
+                transform.rotation = handOnPc.rotation;
+                return;
+            }
+            
             if (handManager.TryGetPoseForJoint(jointID, out var position, out var rotation))
             {
                 hasBeenInitialized = true;

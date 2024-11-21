@@ -77,6 +77,7 @@ public class ChipState : MonoBehaviour
     {
         return Convert.ToString(chipState, 2).PadLeft(16, '0');
     }
+    
 
     private void Update()
     {
@@ -84,6 +85,16 @@ public class ChipState : MonoBehaviour
         
         chipStateString = GetBinaryString();
         chipStateText.text = chipStateString;
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            UpdatePackage.globalAppState = AppState.Waiting;
+        }
+        
+        if (Input.GetKeyDown(KeyCode.F2))
+        {
+            UpdatePackage.globalAppState = AppState.Running;
+        }
     }
     
     [Title("Toggle Sensor Controls")]
@@ -103,4 +114,7 @@ public class ChipState : MonoBehaviour
     [Button] public void ToggleSensor13() => ToggleSensor(13);
     [Button] public void ToggleSensor14() => ToggleSensor(14);
     [Button] public void ToggleSensor15() => ToggleSensor(15);
+    
+    public void SetToWaiting() => UpdatePackage.globalAppState = AppState.Waiting;
+    public void SetToRunning() => UpdatePackage.globalAppState = AppState.Running;
 }

@@ -5,6 +5,7 @@ using UnityEngine.Playables;
 public class IntroController : MonoBehaviour
 {
     public PlayableDirector introTimeline;
+    public Rotate rotateStar;
     
     private AppState lastState = AppState.Waiting;
 
@@ -17,6 +18,7 @@ public class IntroController : MonoBehaviour
             switch (lastState)
             {
                 case AppState.Waiting:
+                    rotateStar.rotationEnabled = true;
                     introTimeline.time = 0;
                     introTimeline.Evaluate();
                     introTimeline.Stop();
