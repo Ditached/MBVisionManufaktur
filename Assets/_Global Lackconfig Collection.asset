@@ -17,59 +17,99 @@ MonoBehaviour:
     macAdress: 38:42:A6:00:05:A8
     material: {fileID: 2100000, guid: f9bf78cb03c24490e903df2e2cacbfd9, type: 2}
     mainColor: {r: 0.3529412, g: 0.43529412, b: 0.3882353, a: 1}
+    isUnassigned: 0
   - name: Hyacinth Red
     macAdress: 38:42:A6:00:05:72
     material: {fileID: 2100000, guid: 557fdf73426c34582b665ff451d24e41, type: 2}
     mainColor: {r: 0.6156863, g: 0.11372549, b: 0.11372549, a: 1}
+    isUnassigned: 0
   - name: Rose Gold
     macAdress: 38:42:A6:00:05:AE
     material: {fileID: 2100000, guid: b37f71f7338eb494da9de591854a8323, type: 2}
     mainColor: {r: 0.7764706, g: 0.5568628, b: 0.3882353, a: 1}
+    isUnassigned: 0
   - name: Brilliant Blue
     macAdress: 38:42:A6:00:05:5C
     material: {fileID: 2100000, guid: 7f29102be09284ee2be5e5e0f2d45e5b, type: 2}
     mainColor: {r: 0, g: 0.047058824, b: 0.21176471, a: 1}
+    isUnassigned: 0
   - name: 'Yellowstone '
     macAdress: 38:42:A6:00:05:43
     material: {fileID: 2100000, guid: 296032508cea344b98f9170aeb062c41, type: 2}
     mainColor: {r: 0.8235294, g: 0.5176471, b: 0.101960786, a: 1}
+    isUnassigned: 0
   - name: 'Magnetite Black '
-    macAdress: 00:00:00:00:00:00
+    macAdress: AA:00:00:00:00:00
     material: {fileID: 2100000, guid: aae0cffc54d974f6587b54a335c711ca, type: 2}
     mainColor: {r: 0.019607844, g: 0.09019608, b: 0.15686275, a: 1}
+    isUnassigned: 0
   - name: Olive
-    macAdress: 00:00:00:00:00:00
+    macAdress: BB:00:00:00:00:00
     material: {fileID: 2100000, guid: f221af4d9894843ee84146fe34e9f66c, type: 2}
     mainColor: {r: 0.11764706, g: 0.18039216, b: 0.16470589, a: 1}
+    isUnassigned: 0
   - name: 'Citrine Brown Magno '
-    macAdress: 00:00:00:00:00:00
+    macAdress: CC:00:00:00:00:00
     material: {fileID: 2100000, guid: 604e909171f424c5c83c150c7dbbb8c7, type: 2}
     mainColor: {r: 0.35686275, g: 0.27058825, b: 0.21568628, a: 1}
+    isUnassigned: 0
   - name: Diamond White
-    macAdress: 00:00:00:00:00:00
+    macAdress: DD:00:00:00:00:00
     material: {fileID: 2100000, guid: 2184b66c8a97d4b9d9d8a0176c719da6, type: 2}
     mainColor: {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
+    isUnassigned: 0
   - name: 'Classic Green '
-    macAdress: 00:00:00:00:00:00
+    macAdress: EE:00:00:00:00:00
     material: {fileID: 2100000, guid: e7aaf68fb32114545828835c31be0987, type: 2}
     mainColor: {r: 0.011764706, g: 0.14117648, b: 0.12941177, a: 1}
+    isUnassigned: 0
   - name: Orange Flame
-    macAdress: 00:00:00:00:00:00
+    macAdress: FF:00:00:00:00:00
     material: {fileID: 2100000, guid: 1100a73905390490fba83eaca45777df, type: 2}
     mainColor: {r: 0.9019608, g: 0.38039216, b: 0.08627451, a: 1}
+    isUnassigned: 0
   - name: South Seas Blue
-    macAdress: 00:00:00:00:00:00
+    macAdress: AE:00:00:00:00:00
     material: {fileID: 2100000, guid: 2e1b8cae6b61e4ad4a72610d3858f873, type: 2}
     mainColor: {r: 0.13333334, g: 0.5647059, b: 0.7176471, a: 1}
+    isUnassigned: 0
   - name: Classic Grey
-    macAdress: 00:00:00:00:00:00
+    macAdress: BA:00:00:00:00:00
     material: {fileID: 2100000, guid: 620e7572ec8fb4dae90c3d744711a9c5, type: 2}
     mainColor: {r: 0.8980392, g: 0.9019608, b: 0.88235295, a: 1}
+    isUnassigned: 0
   - name: Coppe Orange Magno
-    macAdress: 00:00:00:00:00:00
+    macAdress: CD:00:00:00:00:00
     material: {fileID: 2100000, guid: c0155efdd83f149549156e11b33224a8, type: 2}
     mainColor: {r: 0.8352941, g: 0.3529412, b: 0.25490198, a: 1}
+    isUnassigned: 0
   - name: High Tech Silver Magno
-    macAdress: 00:00:00:00:00:00
+    macAdress: EA:00:00:00:00:00
     material: {fileID: 2100000, guid: ee98d51c0cbe8408fb12d596ce4481f9, type: 2}
     mainColor: {r: 0.7058824, g: 0.7294118, b: 0.72156864, a: 1}
+    isUnassigned: 0
+  - name: 
+    macAdress: 00:00:00:00:00:00
+    material: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    isUnassigned: 1
+  - name: 
+    macAdress: 00:00:00:00:00:00
+    material: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    isUnassigned: 1
+  - name: 
+    macAdress: 00:00:00:00:00:00
+    material: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    isUnassigned: 1
+  - name: 
+    macAdress: 00:00:00:00:00:00
+    material: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    isUnassigned: 1
+  - name: 
+    macAdress: 00:00:00:00:00:00
+    material: {fileID: 0}
+    mainColor: {r: 0, g: 0, b: 0, a: 0}
+    isUnassigned: 1

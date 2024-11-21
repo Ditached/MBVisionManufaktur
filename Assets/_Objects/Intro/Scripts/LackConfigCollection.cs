@@ -9,6 +9,7 @@ public class LackConfig
 
     public Material material;
     public Color mainColor;
+    public bool isUnassigned;
 }
 
 [CreateAssetMenu(fileName = "LackConfig", menuName = "Manufaktur/LackConfig", order = 0)]

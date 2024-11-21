@@ -90,6 +90,18 @@ public class MicrochipConnector : MonoBehaviour
         udpConnector.OnMessageReceivedWithEndPoint.AddListener(OnMessageReceived);
     }
 
+    public string GetName()
+    {
+        var name = lackConfigCollection.lackConfigs[index].name;
+        return name;
+    }
+
+    public Color GetColor()
+    {
+        var color = lackConfigCollection.lackConfigs[index].mainColor;
+        return color;
+    }
+
     private void Update()
     {
         // TODO: As a safety measure implement a timeout ontop, maybe 3 seconds or something relativly high
