@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class LackConfig
 {
     public string name;
-    public string macAdress;
+    //public string macAdress;
 
     public Material material;
     public Color mainColor;
@@ -20,8 +20,8 @@ public class LackConfig
 public class LackConfigCollection : ScriptableObject
 {
     
-    [HideInInspector]
-    public UnityEvent OnLackConfigChanged;
+    // [HideInInspector]
+    // public UnityEvent OnLackConfigChanged;
     public LackConfig[] lackConfigs;
     
 }

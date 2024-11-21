@@ -6,7 +6,7 @@ public class ChipsUISpawner : MonoBehaviour
     public LackConfigCollection lackConfigCollection;
     public GameObject microchipUIPrefab;
 
-    private void Awake()
+    private void Start()
     {
         for (var index = 0; index < lackConfigCollection.lackConfigs.Length; index++)
         {
@@ -14,7 +14,7 @@ public class ChipsUISpawner : MonoBehaviour
             
             var microchipUI = Instantiate(microchipUIPrefab, transform);
             microchipUI.GetComponent<MicrochipConnector>().lackConfigCollection = lackConfigCollection;
-            microchipUI.GetComponent<MicrochipConnector>().macAdress = lackConfig.macAdress;
+            microchipUI.GetComponent<MicrochipConnector>().macAdress =  MacAddrProvider.GetMac(index);
         }
     }
 }

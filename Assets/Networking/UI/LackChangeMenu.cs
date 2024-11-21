@@ -39,19 +39,12 @@ public class LackChangeMenu : MonoBehaviour
     public void ChangeSelectedMacToIndex(int index)
     {
         if(selectedMacAdress == "00:00:00:00:00:00") return;
-        var exists = globalConfig.lackConfigs.Contains(globalConfig.lackConfigs.First(lack => lack.macAdress == selectedMacAdress));
-        if (!exists) return;
         
-        var currentLack = globalConfig.lackConfigs.First(lack => lack.macAdress == selectedMacAdress);
-        
-        var targetLack = globalConfig.lackConfigs[index];
-        var targetLackMac = targetLack.macAdress;
-        
-        currentLack.macAdress = targetLackMac;
-        targetLack.macAdress = selectedMacAdress;
+        var currentIndex = MacAddrProvider.GetIndex(selectedMacAdress);
+        MacAddrProvider.instance.SwapMacs(index, currentIndex);
         
         Hide();
-        globalConfig.OnLackConfigChanged.Invoke();
+        MacAddrProvider.instance.OnMacChanged.Invoke();
     }
 
     public void Hide()

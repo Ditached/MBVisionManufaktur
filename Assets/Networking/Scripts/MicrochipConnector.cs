@@ -90,19 +90,12 @@ public class MicrochipConnector : MonoBehaviour
         GetIndexBasedOnMac();
         
         udpConnector.OnMessageReceivedWithEndPoint.AddListener(OnMessageReceived);
-        lackConfigCollection.OnLackConfigChanged.AddListener(OnLackConfigChanged);
+        MacAddrProvider.instance.OnMacChanged.AddListener(OnLackConfigChanged);
     }
 
     private void GetIndexBasedOnMac()
     {
-        for (var i = 0; i < lackConfigCollection.lackConfigs.Length; i++)
-        {
-            if(lackConfigCollection.lackConfigs[i].macAdress == macAdress)
-            {
-                index = i;
-                break;
-            }
-        }
+        index = MacAddrProvider.GetIndex(macAdress);
     }
 
     private void OnLackConfigChanged()
