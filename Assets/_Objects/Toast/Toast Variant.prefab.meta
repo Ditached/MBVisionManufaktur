@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/_Objects/Toast/ToastMod.prefab.meta
+guid: 20a7c6d76ca0243859b047e3275279c4
+========
 guid: 678c3b42cc06b468da3fdaedfed701f9
+>>>>>>>> origin/main:Assets/_Objects/Toast/Toast Variant.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
