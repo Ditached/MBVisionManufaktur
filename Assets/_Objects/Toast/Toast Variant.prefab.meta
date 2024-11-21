@@ -1,12 +1,10 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/E-Klasse/Materials.meta
-guid: a5d270feb676540019e730e200a14146
-folderAsset: yes
-DefaultImporter:
+<<<<<<<< HEAD:Assets/_Objects/Toast/ToastMod.prefab.meta
+guid: 20a7c6d76ca0243859b047e3275279c4
 ========
 guid: 678c3b42cc06b468da3fdaedfed701f9
-PrefabImporter:
 >>>>>>>> origin/main:Assets/_Objects/Toast/Toast Variant.prefab.meta
+PrefabImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
