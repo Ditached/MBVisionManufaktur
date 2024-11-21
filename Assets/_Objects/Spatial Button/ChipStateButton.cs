@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChipStateButton : MonoBehaviour
 {
+    public LackConfigCollection lackConfigCollection;
     public int index;
     public TMP_Text text;
     public ChipState chipState;
@@ -12,6 +13,11 @@ public class ChipStateButton : MonoBehaviour
     {
         GetComponent<SpatialButton>().OnClick.AddListener(OnClick);
         text.text = index.ToString();
+        
+        if (lackConfigCollection.lackConfigs[index].material != null)
+        {
+            GetComponent<MeshRenderer>().material = lackConfigCollection.lackConfigs[index].material;
+        }
     }
 
     private void OnClick()

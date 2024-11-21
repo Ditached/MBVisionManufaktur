@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class UDP_MulticastReceiver : MonoBehaviour
 {
+    public bool doLoopback = false;
     public ChipState chipState;
     public uint udpIdWindowSize = 50;
 
@@ -101,6 +102,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
             client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
             client.Client.Bind(new IPEndPoint(IPAddress.Any, port));
             client.JoinMulticastGroup(IPAddress.Parse(multicastAddress));
+            client.MulticastLoopback = doLoopback;
             remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
             isInitialized = true;

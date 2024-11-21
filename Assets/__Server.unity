@@ -503,10 +503,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4a3d8ebf5d347238808f4edfac78ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lackConfigCollection: {fileID: 0}
   updateGlobalState: 1
   chipState: 0
   chipStateString: 
   chipStateText: {fileID: 1693343249}
+  lackNameText: {fileID: 0}
 --- !u!1 &381869760
 GameObject:
   m_ObjectHideFlags: 0
@@ -2306,7 +2308,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pingInterval: 0.5
   chipStateInterval: 0.2
-  multicastLoopback: 0
+  multicastLoopback: 1
   port: 5000
   multicastAddress: 239.255.255.252
   chipState: {fileID: 376733009}
