@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 
 public class LackSwitcher : MonoBehaviour
 {
+    public AudioClip switchSound;
     [FormerlySerializedAs("fadeOutSpeed")] public float fadeSpeed = 1f;
 
     private static readonly int MainTransitionSlider = Shader.PropertyToID("_MainTransitionSlider");
@@ -160,6 +161,7 @@ public class LackSwitcher : MonoBehaviour
 
     private void SwitchToMaterial(Material activeMaterial)
     {
+        if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().PlayOneShot(switchSound);
         materialChangeRequested = true;
         targetMaterial = activeMaterial;
     }

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 543e8efe41104674398b5855e0aafb8d
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235002
+  packageName: Better Crystals
+  packageVersion: 1.0.1
+  assetPath: Assets/SineVFX/BetterCrystals/_Documentation/01_QuickStart.txt
+  uploadId: 538329

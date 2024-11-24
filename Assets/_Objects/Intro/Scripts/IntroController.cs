@@ -6,6 +6,7 @@ public class IntroController : MonoBehaviour
 {
     public PlayableDirector introTimeline;
     public Rotate rotateStar;
+    public ParticleSystem ps;
     
     private AppState lastState = AppState.Waiting;
 
@@ -22,6 +23,7 @@ public class IntroController : MonoBehaviour
                     introTimeline.time = 0;
                     introTimeline.Evaluate();
                     introTimeline.Stop();
+                    ps.Stop();
                     break;
                 case AppState.Running:
                     introTimeline.time = 0;

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 2c13d87cdf3a7e543883f89631a0c0ad
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235002
+  packageName: Better Crystals
+  packageVersion: 1.0.1
+  assetPath: Assets/SineVFX/BetterCrystals/_Documentation/02_MostUsedParameters.txt
+  uploadId: 538329

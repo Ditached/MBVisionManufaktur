@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7a687e5a3a64d684c8a4520ff1ede031
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 235002
+  packageName: Better Crystals
+  packageVersion: 1.0.1
+  assetPath: Assets/SineVFX/BetterCrystals/_Documentation/03_AllMaterialParameters.txt
+  uploadId: 538329

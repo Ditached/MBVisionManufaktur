@@ -16,7 +16,7 @@ MonoBehaviour:
   - name: Ireland Mid Green Magno
     material: {fileID: 2100000, guid: f9bf78cb03c24490e903df2e2cacbfd9, type: 2}
     mainColor: {r: 0.3529412, g: 0.43529412, b: 0.3882353, a: 1}
-    lackWorld: 0
+    lackWorld: 2
     isUnassigned: 0
   - name: Hyacinth Red
     material: {fileID: 2100000, guid: 557fdf73426c34582b665ff451d24e41, type: 2}
@@ -41,12 +41,12 @@ MonoBehaviour:
   - name: 'Magnetite Black '
     material: {fileID: 2100000, guid: aae0cffc54d974f6587b54a335c711ca, type: 2}
     mainColor: {r: 0.019607844, g: 0.09019608, b: 0.15686275, a: 1}
-    lackWorld: 0
+    lackWorld: 1
     isUnassigned: 0
   - name: Olive
     material: {fileID: 2100000, guid: f221af4d9894843ee84146fe34e9f66c, type: 2}
     mainColor: {r: 0.11764706, g: 0.18039216, b: 0.16470589, a: 1}
-    lackWorld: 0
+    lackWorld: 2
     isUnassigned: 0
   - name: 'Citrine Brown Magno '
     material: {fileID: 2100000, guid: 604e909171f424c5c83c150c7dbbb8c7, type: 2}
@@ -56,12 +56,12 @@ MonoBehaviour:
   - name: Diamond White
     material: {fileID: 2100000, guid: 2184b66c8a97d4b9d9d8a0176c719da6, type: 2}
     mainColor: {r: 0.83137256, g: 0.83137256, b: 0.83137256, a: 1}
-    lackWorld: 0
+    lackWorld: 1
     isUnassigned: 0
   - name: 'Classic Green '
     material: {fileID: 2100000, guid: e7aaf68fb32114545828835c31be0987, type: 2}
     mainColor: {r: 0.011764706, g: 0.14117648, b: 0.12941177, a: 1}
-    lackWorld: 0
+    lackWorld: 2
     isUnassigned: 0
   - name: Orange Flame
     material: {fileID: 2100000, guid: 1100a73905390490fba83eaca45777df, type: 2}
@@ -71,12 +71,12 @@ MonoBehaviour:
   - name: South Seas Blue
     material: {fileID: 2100000, guid: 2e1b8cae6b61e4ad4a72610d3858f873, type: 2}
     mainColor: {r: 0.13333334, g: 0.5647059, b: 0.7176471, a: 1}
-    lackWorld: 0
+    lackWorld: 1
     isUnassigned: 0
   - name: Classic Grey
     material: {fileID: 2100000, guid: 620e7572ec8fb4dae90c3d744711a9c5, type: 2}
     mainColor: {r: 0.8980392, g: 0.9019608, b: 0.88235295, a: 1}
-    lackWorld: 0
+    lackWorld: 1
     isUnassigned: 0
   - name: Coppe Orange Magno
     material: {fileID: 2100000, guid: c0155efdd83f149549156e11b33224a8, type: 2}
@@ -86,7 +86,7 @@ MonoBehaviour:
   - name: High Tech Silver Magno
     material: {fileID: 2100000, guid: ee98d51c0cbe8408fb12d596ce4481f9, type: 2}
     mainColor: {r: 0.7058824, g: 0.7294118, b: 0.72156864, a: 1}
-    lackWorld: 0
+    lackWorld: 1
     isUnassigned: 0
   - name: 
     material: {fileID: 0}
