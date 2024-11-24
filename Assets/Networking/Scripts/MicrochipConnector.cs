@@ -124,8 +124,6 @@ public class MicrochipConnector : MonoBehaviour
 
     private void Update()
     {
-        
-        // TODO: As a safety measure implement a timeout ontop, maybe 3 seconds or something relativly high
         if (sensorIsActive && lastHalStatusReceived + timeSensorStayActive < Time.time) sensorIsActive = false;
         chipState.SetSensor(index, sensorIsActive);
 

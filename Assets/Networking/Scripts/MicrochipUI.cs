@@ -68,7 +68,7 @@ public class MicrochipUI : MonoBehaviour
 
         if (_microchipConnector.isAvailable)
         {
-            if (_microchipConnector.timeSinceLastMessage < MicrochipConnector.timeChipStaysConnected)
+            if (_microchipConnector.timeSinceLastMessage <= MicrochipConnector.timeChipStaysConnected)
             {
                 totalTimeConnectedValueInSeconds += Time.deltaTime;
             }

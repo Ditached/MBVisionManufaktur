@@ -17,6 +17,10 @@ public class ChipStateButton : MonoBehaviour
         if (lackConfigCollection.lackConfigs[index].material != null)
         {
             GetComponent<MeshRenderer>().material = lackConfigCollection.lackConfigs[index].material;
+            var propertyBlock = new MaterialPropertyBlock();
+            propertyBlock.SetFloat("_MainTransitionSlider", 1f);
+            GetComponent<MeshRenderer>().SetPropertyBlock(propertyBlock);
+            
         }
     }
 

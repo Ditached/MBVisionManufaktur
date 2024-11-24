@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: citrine brown magno
-  m_Shader: {fileID: -6465566751694194690, guid: 914e5be9fb2b44170b6e5909622a8a66, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 8afa28461a9eb4f7f84151f017f57902, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -111,9 +111,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _A: 0
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _B: 0
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
@@ -132,6 +134,12 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _MainTransistionSoftness: 0.3
+    - _MainTransitionEdgeGlow: 2
+    - _MainTransitionEdgeSize: 0
+    - _MainTransitionEdgeSoftness: 0
+    - _MainTransitionNoiseMovementStrength: 0
+    - _MainTransitionSlider: 0
     - _Metallic: 0
     - _Normal_Strenght: 1
     - _OcclusionStrength: 1
