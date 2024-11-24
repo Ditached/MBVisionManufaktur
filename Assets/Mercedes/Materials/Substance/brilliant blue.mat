@@ -139,7 +139,7 @@ Material:
     - _MainTransitionEdgeSize: 0.75
     - _MainTransitionEdgeSoftness: 0.19
     - _MainTransitionNoiseMovementStrength: 0.404
-    - _MainTransitionSlider: 1
+    - _MainTransitionSlider: 0
     - _Metallic: 0
     - _Normal_Strenght: 0.25
     - _OcclusionStrength: 1

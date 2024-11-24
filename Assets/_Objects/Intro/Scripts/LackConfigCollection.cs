@@ -5,6 +5,13 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum LackWorld
+{
+    Sandstone,
+    Crystal,
+    Jungle
+}
+
 [Serializable]
 public class LackConfig
 {
@@ -13,6 +20,7 @@ public class LackConfig
 
     public Material material;
     public Color mainColor;
+    public LackWorld lackWorld;
     public bool isUnassigned;
 }
 

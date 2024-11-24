@@ -3,16 +3,33 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+
 
 public class LackSwitcher : MonoBehaviour
 {
-    public float fadeOutSpeed = 1f;
+    [FormerlySerializedAs("fadeOutSpeed")] public float fadeSpeed = 1f;
 
     private static readonly int MainTransitionSlider = Shader.PropertyToID("_MainTransitionSlider");
-    [Header("References")] public LackConfigCollection lackConfigCollection;
+    [Header("References")]
+    public LackConfigCollection lackConfigCollection;
     public ChipState chipState;
-
     public MeshRenderer lackMeshRenderer;
+
+    public Transform dissolverPlane;
+    public float dissolverPlaneFadeOutY = 0f;
+    public float dissolverPlaneFadeInY = 5f;
+    
+    public Transform sandstoneWorld;
+    public Transform crystalWorld;
+    public Transform jungleWorld;
+
+    private Transform currentWorld;
+    
+    public Light undergroundLight;
+    public ParticleSystem particles;
+
 
     [Header("Debug")] [ReadOnly] public LackConfig activeLackConfig;
 
@@ -20,7 +37,9 @@ public class LackSwitcher : MonoBehaviour
 
     private void Awake()
     {
-        //_chipStateReactor.OnChipStateChanged.AddListener(OnChipStateChanged);
+        jungleWorld.gameObject.SetActive(false);
+        crystalWorld.gameObject.SetActive(false);
+        sandstoneWorld.gameObject.SetActive(false);
 
         _materialPropertyBlock = new MaterialPropertyBlock();
         lackMeshRenderer.SetPropertyBlock(_materialPropertyBlock);
@@ -76,6 +95,22 @@ public class LackSwitcher : MonoBehaviour
 
             if (_materialPropertyBlock.GetFloat(MainTransitionSlider) <= 0f)
             {
+                if(currentWorld != null) currentWorld.gameObject.SetActive(false);
+
+                switch (activeLackConfig.lackWorld)
+                {
+                    case LackWorld.Sandstone:
+                        currentWorld = sandstoneWorld;
+                        break;
+                    case LackWorld.Crystal:
+                        currentWorld = crystalWorld;
+                        break;
+                    case LackWorld.Jungle:
+                        currentWorld = jungleWorld;
+                        break;
+                }
+                
+                currentWorld.gameObject.SetActive(true);
                 lackMeshRenderer.material = targetMaterial;
                 materialChangeRequested = false;
                 fadingOutCurrentMat = false;
@@ -83,20 +118,32 @@ public class LackSwitcher : MonoBehaviour
         }
         
         
-        MoveLackSliderValueTowards(fadingOutCurrentMat ? 0f : 1f);
+        FadeTo(fadingOutCurrentMat ? 0f : 1f);
     }
 
     [ReadOnly] public float debugTargetValue;
-    [ReadOnly] public float debugCurrentValue;
+    [ReadOnly] public float fadeValue;
     [ReadOnly] public float propertyBlockValue;
 
-    private void MoveLackSliderValueTowards(float targetValue)
+    private void FadeTo(float targetValue)
     {
-        debugTargetValue = targetValue;
-        var val = _materialPropertyBlock.GetFloat(MainTransitionSlider);
-        val = Mathf.MoveTowards(val, targetValue, Time.deltaTime * fadeOutSpeed);
+        var color = activeLackConfig == null ? Color.cyan : activeLackConfig.mainColor;
+        undergroundLight.color = Color.Lerp(undergroundLight.color, color, Time.deltaTime * fadeSpeed);
         
-        debugCurrentValue = Mathf.MoveTowards(debugCurrentValue, targetValue, Time.deltaTime * fadeOutSpeed);
+        var main = particles.main;
+        var startColor = main.startColor;
+        ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient( Color.Lerp(startColor.color, color, Time.deltaTime * fadeSpeed) );
+        main.startColor = newGradient;
+        
+           debugTargetValue = targetValue;
+        var val = _materialPropertyBlock.GetFloat(MainTransitionSlider);
+        val = Mathf.MoveTowards(val, targetValue, Time.deltaTime * fadeSpeed);
+        
+        fadeValue = Mathf.MoveTowards(fadeValue, targetValue, Time.deltaTime * fadeSpeed);
+        
+        var planePosY = Mathf.Lerp(dissolverPlaneFadeOutY, dissolverPlaneFadeInY, val);
+        dissolverPlane.localPosition = new Vector3(dissolverPlane.localPosition.x, planePosY, dissolverPlane.localPosition.z);
+
         
         _materialPropertyBlock.SetFloat(MainTransitionSlider, val);
         propertyBlockValue = _materialPropertyBlock.GetFloat(MainTransitionSlider);

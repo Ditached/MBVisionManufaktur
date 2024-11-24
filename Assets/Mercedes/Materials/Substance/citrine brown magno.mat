@@ -111,11 +111,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _A: 0
+    - _A: 0.76
     - _AddPrecomputedVelocity: 0
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _B: 0
+    - _B: -0.13
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BlendOp: 0
@@ -134,11 +134,11 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _MainTransistionSoftness: 0.3
-    - _MainTransitionEdgeGlow: 2
-    - _MainTransitionEdgeSize: 0
-    - _MainTransitionEdgeSoftness: 0
-    - _MainTransitionNoiseMovementStrength: 0
+    - _MainTransistionSoftness: 0.21
+    - _MainTransitionEdgeGlow: 0.242
+    - _MainTransitionEdgeSize: 0.75
+    - _MainTransitionEdgeSoftness: 0.19
+    - _MainTransitionNoiseMovementStrength: 0.404
     - _MainTransitionSlider: 0
     - _Metallic: 0
     - _Normal_Strenght: 1
