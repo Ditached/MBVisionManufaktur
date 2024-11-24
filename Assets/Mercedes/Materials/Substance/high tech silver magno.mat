@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 930f3dd1dc3064450b470f530db4afb1, type: 3}
         m_Scale: {x: 35, y: 35}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -74,11 +74,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0dde92a0aa61146d387fa6302e367e3a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: b64aa0105e03d4bd8944e962d3de25b6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -139,7 +139,9 @@ Material:
     - _MainTransitionEdgeSize: 0.75
     - _MainTransitionEdgeSoftness: 0.19
     - _MainTransitionNoiseMovementStrength: 0.404
-    - _MainTransitionSlider: 0
+    - _MainTransitionRadialLengthScale: -0.13
+    - _MainTransitionRadialScale: 0.76
+    - _MainTransitionSlider: 1
     - _Metallic: 0
     - _Normal_Strenght: 1
     - _OcclusionStrength: 1
