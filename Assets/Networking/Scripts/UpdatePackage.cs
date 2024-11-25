@@ -31,15 +31,17 @@ public struct UpdatePackage
     public AppState appState; // 1 byte
     public uint id; // 4 bytes
     public ushort chipState; // 2 bytes
+    public ushort buildNumber; // 2 bytes
     
-    public static UpdatePackage CreatePong()
+    public static UpdatePackage CreatePong(ushort bNum)
     {
         return new UpdatePackage()
         {
             msgType = MsgType.Pong,
             id = nextId++,
             chipState = globalChipState,
-            appState = globalAppState
+            appState = globalAppState,
+            buildNumber = bNum
         };
     }
     

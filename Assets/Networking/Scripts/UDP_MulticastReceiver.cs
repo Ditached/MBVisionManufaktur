@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 public class UDP_MulticastReceiver : MonoBehaviour
 {
+    public BuildVersion buildVersion;
     public bool doLoopback = false;
     public ChipState chipState;
     public uint udpIdWindowSize = 50;
@@ -71,7 +72,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
                 if (msg.msgType == MsgType.Ping)
                 {
                     var ip = remoteEndPoint.Address.ToString();
-                    var response = UpdatePackage.CreatePong().ToBytes();
+                    var response = UpdatePackage.CreatePong(buildVersion.buildNumber).ToBytes();
                     client.Send(response, response.Length, new IPEndPoint(IPAddress.Parse(ip), serverPort));
                 }
                 

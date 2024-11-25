@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class VisionConnectionUI : MonoBehaviour
 {
+    [HideInInspector]
+    public VisionConnection visionConnection;
+    
     public static float maxPongTimePending = 2f;
     public static float maxPongTimeLost = 5f;
     
@@ -14,10 +17,12 @@ public class VisionConnectionUI : MonoBehaviour
     
     public Image visionIcon;
     public TMP_Text ipText;
+    public TMP_Text versionText;
 
     private void Update()
     {
         ipText.text = ip;
+        versionText.text = visionConnection.buildNumber.ToString();
         
         var diff = DateTime.Now - udpVisionPingReceiver.GetLastPing(ip);
         

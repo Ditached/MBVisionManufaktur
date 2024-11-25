@@ -10,7 +10,7 @@ public class UDP_VisionPingReceiver : MonoBehaviour
     public VisionConnectionUI visionConnectionPrefab;
     public Transform parent;
 
-    private List<VisionConnection> _visionIPs = new();
+    private List<VisionConnection> _visionConnectionsData = new();
 
     private void Awake()
     {
@@ -26,24 +26,30 @@ public class UDP_VisionPingReceiver : MonoBehaviour
             if (package.msgType == MsgType.Pong)
             {
                 Debug.Log($"Received Pong from {endpoint.Address}");
-                foreach (var visionIP in _visionIPs)
+                foreach (var visionIP in _visionConnectionsData)
                 {
                     if (visionIP.ip == endpoint.Address.ToString())
                     {
                         visionIP.lastPing = DateTime.Now;
+                        visionIP.buildNumber = package.buildNumber;
+                        
                         return;
                     }
                 }
 
-                _visionIPs.Add(new VisionConnection
+                var connectionData = new VisionConnection
                 {
                     ip = endpoint.Address.ToString(),
-                    lastPing = DateTime.Now
-                });
+                    lastPing = DateTime.Now,
+                    buildNumber = package.buildNumber
+                };
 
-                var visionConnection = Instantiate(visionConnectionPrefab, parent);
-                visionConnection.udpVisionPingReceiver = this;
-                visionConnection.ip = endpoint.Address.ToString();
+                _visionConnectionsData.Add(connectionData);
+
+                var visionConnectionUI_gameobject = Instantiate(visionConnectionPrefab, parent);
+                visionConnectionUI_gameobject.visionConnection = connectionData;
+                visionConnectionUI_gameobject.udpVisionPingReceiver = this;
+                visionConnectionUI_gameobject.ip = endpoint.Address.ToString();
             }
         }
         catch (Exception e)
@@ -55,7 +61,7 @@ public class UDP_VisionPingReceiver : MonoBehaviour
 
     public DateTime GetLastPing(string ip)
     {
-        foreach (var visionIP in _visionIPs)
+        foreach (var visionIP in _visionConnectionsData)
         {
             if (visionIP.ip == ip)
             {

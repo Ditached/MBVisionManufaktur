@@ -5547,6 +5547,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3317492113897999925, guid: f594510fe9d334531a1abf4c95d440bb, type: 3}
+      propertyPath: buildVersion
+      value: 
+      objectReference: {fileID: 11400000, guid: a957b48f979144b52bdcbb90b7714b5b, type: 2}
+    - target: {fileID: 3317492113897999925, guid: f594510fe9d334531a1abf4c95d440bb, type: 3}
       propertyPath: chipStateText
       value: 
       objectReference: {fileID: 1597252280}

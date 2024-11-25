@@ -5,6 +5,7 @@ public class VisionConnection : IEquatable<VisionConnection>
 {
     public string ip;
     public DateTime lastPing;
+    public ushort buildNumber;
 
     public bool Equals(VisionConnection other)
     {
