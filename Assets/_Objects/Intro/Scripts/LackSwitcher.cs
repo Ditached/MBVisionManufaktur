@@ -31,10 +31,16 @@ public class LackSwitcher : MonoBehaviour
     public Light undergroundLight;
     public ParticleSystem particles;
 
+    [Header("World Colors")]
+    public Color defaultColor = Color.white;
+    public Color sandstoneColor = Color.red;
+    public Color crystalColor = Color.blue;
+    public Color jungleColor = Color.green;
 
     [Header("Debug")] [ReadOnly] public LackConfig activeLackConfig;
 
     private MaterialPropertyBlock _materialPropertyBlock;
+    public event Action<LackWorld> OnWorldChanged;
 
     private void Awake()
     {
@@ -53,6 +59,7 @@ public class LackSwitcher : MonoBehaviour
             EnsureFadeOut();
             materialChangeRequested = false;
             activeLackConfig = null;
+            OnWorldChanged?.Invoke(activeLackConfig.lackWorld);
             return;
         }
 
@@ -111,6 +118,9 @@ public class LackSwitcher : MonoBehaviour
                         break;
                 }
                 
+                OnWorldChanged?.Invoke(activeLackConfig.lackWorld);
+                Debug.Log($"Switching to {activeLackConfig.lackWorld}");
+                
                 currentWorld.gameObject.SetActive(true);
                 lackMeshRenderer.material = targetMaterial;
                 materialChangeRequested = false;
@@ -128,15 +138,31 @@ public class LackSwitcher : MonoBehaviour
 
     private void FadeTo(float targetValue)
     {
-        var color = activeLackConfig == null ? Color.cyan : activeLackConfig.mainColor;
-        undergroundLight.color = Color.Lerp(undergroundLight.color, color, Time.deltaTime * fadeSpeed);
+        // Set light and particle colors based on the active world
+        Color worldColor = defaultColor; // Default to white
+
+        if (currentWorld == sandstoneWorld)
+        {
+            worldColor = sandstoneColor;
+        }
+        else if (currentWorld == crystalWorld)
+        {
+            worldColor = crystalColor;
+        }
+        else if (currentWorld == jungleWorld)
+        {
+            worldColor = jungleColor;
+        }
+
+        // Apply the color to underground light and particles
+        undergroundLight.color = Color.Lerp(undergroundLight.color, worldColor, Time.deltaTime * fadeSpeed);
         
         var main = particles.main;
         var startColor = main.startColor;
-        ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient( Color.Lerp(startColor.color, color, Time.deltaTime * fadeSpeed) );
+        ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient(Color.Lerp(startColor.color, worldColor, Time.deltaTime * fadeSpeed));
         main.startColor = newGradient;
         
-           debugTargetValue = targetValue;
+        debugTargetValue = targetValue;
         var val = _materialPropertyBlock.GetFloat(MainTransitionSlider);
         val = Mathf.MoveTowards(val, targetValue, Time.deltaTime * fadeSpeed);
         
@@ -150,7 +176,6 @@ public class LackSwitcher : MonoBehaviour
         propertyBlockValue = _materialPropertyBlock.GetFloat(MainTransitionSlider);
         lackMeshRenderer.SetPropertyBlock(_materialPropertyBlock);
     }
-
 
     private void EnsureFadeOut()
     {
