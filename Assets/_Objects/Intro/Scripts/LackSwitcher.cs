@@ -59,6 +59,7 @@ public class LackSwitcher : MonoBehaviour
             EnsureFadeOut();
             materialChangeRequested = false;
             activeLackConfig = null;
+            OnWorldChanged?.Invoke(activeLackConfig.lackWorld);
             return;
         }
 
