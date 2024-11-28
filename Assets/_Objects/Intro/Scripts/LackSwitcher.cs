@@ -35,6 +35,7 @@ public class LackSwitcher : MonoBehaviour
     [Header("Debug")] [ReadOnly] public LackConfig activeLackConfig;
 
     private MaterialPropertyBlock _materialPropertyBlock;
+    public event Action<LackWorld> OnWorldChanged;
 
     private void Awake()
     {
@@ -110,6 +111,9 @@ public class LackSwitcher : MonoBehaviour
                         currentWorld = jungleWorld;
                         break;
                 }
+                
+                OnWorldChanged?.Invoke(activeLackConfig.lackWorld);
+                Debug.Log($"Switching to {activeLackConfig.lackWorld}");
                 
                 currentWorld.gameObject.SetActive(true);
                 lackMeshRenderer.material = targetMaterial;
