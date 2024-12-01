@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 1d1450a539b48412c83123dc84dca4e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
@@ -139,6 +139,8 @@ Material:
     - _MainTransitionEdgeSize: 0.75
     - _MainTransitionEdgeSoftness: 0.19
     - _MainTransitionNoiseMovementStrength: 0.404
+    - _MainTransitionRadialLengthScale: -0.13
+    - _MainTransitionRadialScale: 0.76
     - _MainTransitionSlider: 0
     - _Metallic: 0
     - _Normal_Strenght: 0.2

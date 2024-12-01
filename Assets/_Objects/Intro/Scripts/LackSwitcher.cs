@@ -41,6 +41,7 @@ public class LackSwitcher : MonoBehaviour
 
     private MaterialPropertyBlock _materialPropertyBlock;
     public event Action<LackWorld> OnWorldChanged;
+    public event Action NoWorldActive;
 
     private void Awake()
     {
@@ -59,7 +60,7 @@ public class LackSwitcher : MonoBehaviour
             EnsureFadeOut();
             materialChangeRequested = false;
             activeLackConfig = null;
-            OnWorldChanged?.Invoke(activeLackConfig.lackWorld);
+            NoWorldActive?.Invoke();
             return;
         }
 

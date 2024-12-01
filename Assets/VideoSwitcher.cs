@@ -1,32 +1,79 @@
+using System.Collections;
+using Unity.PolySpatial;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 using UnityEngine.Video;
 
 public class VideoSwitcher : MonoBehaviour
 {
-    public VideoClip sandstoneVideo;
-    public VideoClip crystalVideo;
-    public VideoClip jungleVideo;
+    public Texture sandstoneVideo;
+    public Texture crystalVideo;
+    public Texture jungleVideo;
+    
+    public ParticleSystem[] particleSystemSandstone;
+    public ParticleSystem[] particleSystemCrystal;
+    public ParticleSystem[] particleSystemJungle;
+    
+    public float particlesTime = 3f;
 
-    private VideoPlayer videoPlayer;
+    private Renderer material;
     private MeshRenderer meshRenderer;
 
 
     private void Awake()
     {
-        videoPlayer = GetComponent<VideoPlayer>();
+        material = GetComponent<Renderer>();
         meshRenderer = GetComponent<MeshRenderer>();
         meshRenderer.enabled = false;
     }
 
     private void OnEnable()
     {
-        FindObjectOfType<LackSwitcher>().OnWorldChanged += HandleWorldChanged;
+        var lackSwitcher = FindObjectOfType<LackSwitcher>();
+        lackSwitcher.OnWorldChanged += HandleWorldChanged;
+        lackSwitcher.NoWorldActive += HandleNoWorldActive;
     }
 
     private void OnDisable()
     {
-        FindObjectOfType<LackSwitcher>().OnWorldChanged -= HandleWorldChanged;
+        var lackSwitcher = FindObjectOfType<LackSwitcher>();
+    
+        if (lackSwitcher != null)
+        {
+            lackSwitcher.OnWorldChanged -= HandleWorldChanged;
+            lackSwitcher.NoWorldActive -= HandleNoWorldActive;
+        }
     }
+
+    private void HandleNoWorldActive()
+    {
+        if (meshRenderer.enabled)
+        {
+            meshRenderer.enabled = false;
+        }
+
+        /*videoPlayer.Stop();
+        videoPlayer.Clip = null;*/
+    }
+    
+    public void PlayForSeconds(ParticleSystem[] particleSystems, float seconds)
+    {
+        foreach (var ps in particleSystems)
+        {
+            ps.Play();
+        }
+        StartCoroutine(StopAfterSeconds(particleSystems, seconds));
+    }
+    
+    private IEnumerator StopAfterSeconds(ParticleSystem[] particleSystems, float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        foreach (var ps in particleSystems)
+        {
+            ps.Stop();
+        }
+    }
+
 
     private void HandleWorldChanged(LackWorld world)
     {
@@ -38,19 +85,19 @@ public class VideoSwitcher : MonoBehaviour
         switch (world)
         {
             case LackWorld.Sandstone:
-                videoPlayer.clip = sandstoneVideo;
+                material.material.SetTexture("_BaseMap", sandstoneVideo);
+                PlayForSeconds(particleSystemSandstone, particlesTime);
                 break;
             case LackWorld.Crystal:
-                videoPlayer.clip = crystalVideo;
+                material.material.SetTexture("_BaseMap", crystalVideo);
+                PlayForSeconds(particleSystemCrystal, particlesTime);
                 break;
             case LackWorld.Jungle:
-                videoPlayer.clip = jungleVideo;
+                material.material.SetTexture("_BaseMap", jungleVideo);
+                PlayForSeconds(particleSystemJungle, particlesTime);
                 break;
             default:
-                videoPlayer.clip = null;
                 break;
         }
-
-        videoPlayer.Play();
     }
 }
