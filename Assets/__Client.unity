@@ -9244,7 +9244,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_SerializedLibrary: {fileID: 11400000, guid: 54be9e8e4845d45de92fac122b8300d7, type: 2}
-  m_MaxNumberOfMovingImages: 0
+  m_MaxNumberOfMovingImages: 1
   m_TrackedImagePrefab: {fileID: 0}
 --- !u!114 &1503524550
 MonoBehaviour:

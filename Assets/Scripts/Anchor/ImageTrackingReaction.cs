@@ -24,6 +24,8 @@ public class ImageTrackingReaction : MonoBehaviour
 
     void OnChanged(ARTrackablesChangedEventArgs<ARTrackedImage> eventArgs)
     {
+        Debug.Log($"[ImageTrackingReaction] - OnChanged - {eventArgs.added.Count} added, {eventArgs.updated.Count} updated, {eventArgs.removed.Count} removed");
+        
         foreach (var newImage in eventArgs.added)
         {
             AddAnchorPlacer(newImage);

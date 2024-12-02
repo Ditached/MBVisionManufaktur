@@ -36,4 +36,4 @@ MonoBehaviour:
     m_Size: {x: 0.75, y: 0.75}
     m_SpecifySize: 1
     m_Name: Marker
-    m_Texture: {fileID: 0}
+    m_Texture: {fileID: 2800000, guid: 936b6d56943cc499aa997a19d0a6b24c, type: 3}
