@@ -1,9 +1,12 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OperatorPanelUI : MonoBehaviour
 {
+    public TMP_Text angleText;
+    
     public Color activeColor;
     public Color inactiveColor;
     
@@ -41,5 +44,7 @@ public class OperatorPanelUI : MonoBehaviour
         RunningButton.image.color = UpdatePackage.globalAppState == AppState.Running ? activeColor : inactiveColor;
         
         ConfigButton.image.color = UpdatePackage.configMode ? activeColor : inactiveColor;
+
+        angleText.text = $"{UpdatePackage.globalPlattformRotation:F1}°";
     }
 }

@@ -26,6 +26,8 @@ public struct UpdatePackage
     public static bool configMode = false;
     public static AppState globalAppState = AppState.Waiting;
     public static ushort globalChipState = 0;
+    public static float globalPlattformRotation = 0f;
+    public static float globalPlattformSpeed = 0f;
     public static uint nextId = 0;
 
     public MsgType msgType; // 1 byte
@@ -34,6 +36,8 @@ public struct UpdatePackage
     public ushort chipState; // 2 bytes
     public ushort buildNumber; // 2 bytes
     public bool inConfigMode; // 1 byte
+    public float plattformRotation; // 4 bytes
+    public float plattformSpeed;
 
     public static UpdatePackage CreateBasePackage()
     {
@@ -42,7 +46,9 @@ public struct UpdatePackage
             id = nextId++,
             chipState = globalChipState,
             appState = globalAppState,
-            inConfigMode = configMode
+            inConfigMode = configMode,
+            plattformRotation = globalPlattformRotation,
+            plattformSpeed = globalPlattformSpeed
         };
     }
     
@@ -63,6 +69,7 @@ public struct UpdatePackage
         appState = state;
         return this;
     }
+    
 
     public static UpdatePackage CreateRequestChangeForAppState(AppState appState)
     {
