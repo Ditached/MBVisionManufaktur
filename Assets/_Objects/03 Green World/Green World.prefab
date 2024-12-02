@@ -445,6 +445,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8093682643920215571}
+  - component: {fileID: 1725411872329362272}
   m_Layer: 0
   m_Name: Green World
   m_TagString: Untagged
@@ -469,6 +470,24 @@ Transform:
   - {fileID: 1147861445088934576}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1725411872329362272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9180399214613022800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a276f4d3a4eb64a3b8f250ba815f6bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToScale:
+  - {fileID: 7040085205300461712}
+  - {fileID: 7081138594931506641}
+  - {fileID: 5439165204075134342}
+  - {fileID: 5875043012874868135}
+  duration: 3
 --- !u!1001 &1152733124638596890
 PrefabInstance:
   m_ObjectHideFlags: 0

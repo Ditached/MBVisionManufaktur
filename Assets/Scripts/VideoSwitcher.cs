@@ -11,6 +11,10 @@ public class VideoSwitcher : MonoBehaviour
     public Texture crystalVideo;
     public Texture jungleVideo;
     
+    public ScalePlane redWorldShadows;
+    public ScalePlane blueWorldShadows;
+    public ScalePlane greenWorldShadows;
+    
     public ParticleSystem[] particleSystemSandstone;
     public ParticleSystem[] particleSystemCrystal;
     public ParticleSystem[] particleSystemJungle;
@@ -91,14 +95,17 @@ public class VideoSwitcher : MonoBehaviour
             {
                 case LackWorld.Sandstone:
                     material.material.SetTexture("_BaseMap", sandstoneVideo);
+                    redWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemSandstone, particlesTime);
                     break;
                 case LackWorld.Crystal:
                     material.material.SetTexture("_BaseMap", crystalVideo);
+                    blueWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemCrystal, particlesTime);
                     break;
                 case LackWorld.Jungle:
                     material.material.SetTexture("_BaseMap", jungleVideo);
+                    greenWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemJungle, particlesTime);
                     break;
                 default:
