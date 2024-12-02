@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class ChipState : MonoBehaviour
 {
+    public bool notifyClientsOnChange;
+    public UDP_MulticastSender udpMulticastSender;
+    
     public LackConfigCollection lackConfigCollection;
     public bool updateGlobalState;
 
@@ -15,10 +18,21 @@ public class ChipState : MonoBehaviour
 
     public void SetSensor(int sensorIndex, bool state)
     {
+        var prevState = GetSensor(sensorIndex);
+        
         if (state)
             chipState |= (ushort) (1 << sensorIndex);
         else
             chipState &= (ushort) ~(1 << sensorIndex);
+        
+        //Has the state changed?
+        if (prevState != state)
+        {
+            if (notifyClientsOnChange && udpMulticastSender != null)
+            {
+                udpMulticastSender.SendChipState();
+            }
+        }
     }
 
     public int GetFirstActiveSensor()

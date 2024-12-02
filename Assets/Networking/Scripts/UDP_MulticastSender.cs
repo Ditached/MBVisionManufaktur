@@ -7,7 +7,6 @@ using UnityEngine;
 public class UDP_MulticastSender : MonoBehaviour
 {
     public float pingInterval = 1f;
-    public float chipStateInterval = 0.25f;
     
     public bool multicastLoopback = true;
     public int port = 62111; // Using a safer high port number
@@ -32,7 +31,6 @@ public class UDP_MulticastSender : MonoBehaviour
             Debug.Log($"[MULTICAST SENDER] Multicast sender initialized on {multicastAddress}:{port}");
 
             InvokeRepeating(nameof(SendPing), 0, pingInterval);
-            //InvokeRepeating(nameof(SendChipState), 0, chipStateInterval);
         }
         catch (Exception e)
         {
