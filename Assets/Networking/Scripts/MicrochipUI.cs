@@ -49,8 +49,9 @@ public class MicrochipUI : MonoBehaviour
     private void OnBtnClick()
     {
         glowing = !glowing;
-        FindFirstObjectByType<UDP_Connector>()
-            .SendGlowMessage(_microchipConnector.macAdress, _microchipConnector.ipAdress, glowing);
+        _microchipConnector.overwriteSensorActive = glowing;
+        
+        // FindFirstObjectByType<UDP_Connector>() .SendGlowMessage(_microchipConnector.macAdress, _microchipConnector.ipAdress, glowing);
     }
 
     private void Update()

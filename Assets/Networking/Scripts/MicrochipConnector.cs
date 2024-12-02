@@ -58,6 +58,8 @@ public struct StatusMessage
 
 public class MicrochipConnector : MonoBehaviour
 {
+    public bool overwriteSensorActive;
+    
     public LackConfigCollection lackConfigCollection;
     public static float timeSensorStayActive = 10f; //This is a safety timeout, e.g. sensor is over the magnet but battery runs out
     public static float timeChipStaysConnected = 20f;
@@ -125,7 +127,7 @@ public class MicrochipConnector : MonoBehaviour
     private void Update()
     {
         if (sensorIsActive && lastHalStatusReceived + timeSensorStayActive < Time.time) sensorIsActive = false;
-        chipState.SetSensor(index, sensorIsActive);
+        chipState.SetSensor(index, sensorIsActive || overwriteSensorActive);
 
         timeSinceLastMessage = Time.time - lastMessageReceived;
         timeSinceLastHalStatus = Time.time - lastHalStatusReceived;
