@@ -66,7 +66,7 @@ public class VideoSwitcher : MonoBehaviour
         foreach (var ps in particleSystems)
         {
             if(ps == null) continue;
-            ps.Play();
+            ps.Play(true);
         }
         StartCoroutine(StopAfterSeconds(particleSystems, seconds));
     }
