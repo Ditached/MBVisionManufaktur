@@ -28,7 +28,8 @@ public class DebugMenuOpener : MonoBehaviour
         
         if (currTime > minTime)
         {
-            debugMenu.SetActive(true);
+            debugMenu.SetActive(!debugMenu.activeInHierarchy);
+            currTime = 0f;
         }
     }
 }
