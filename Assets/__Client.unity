@@ -7493,21 +7493,20 @@ MonoBehaviour:
   crystalVideo: {fileID: 32900000, guid: 05743d7a3454f4becb11c7ed353d2166, type: 3}
   jungleVideo: {fileID: 32900000, guid: b1dc289dcd4064cee8e04322b54839c4, type: 3}
   particleSystemSandstone:
-  - {fileID: 1154642274}
-  - {fileID: 176181956}
-  - {fileID: 1081268991}
-  - {fileID: 1298144257824769341}
-  - {fileID: 1298144257824769340}
   - {fileID: 1298144257824769339}
+  - {fileID: 1154642274}
+  - {fileID: 1081268991}
   - {fileID: 1298144257824769338}
-  - {fileID: 1298144257824769343}
-  - {fileID: 1298144257824769342}
+  - {fileID: 176181956}
   particleSystemCrystal:
+  - {fileID: 2591363742005556556}
   - {fileID: 1174866466}
+  - {fileID: 2591363742005556555}
   particleSystemJungle:
   - {fileID: 2139967172}
   - {fileID: 1070218900}
   - {fileID: 565521919}
+  - {fileID: 3184041424348150674}
   particlesTime: 3
 --- !u!328 &1136259309
 VideoPlayer:
@@ -9693,6 +9692,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Red World
       objectReference: {fileID: 0}
+    - target: {fileID: 7698075614822423075, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9700,32 +9703,12 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
 --- !u!198 &1298144257824769338 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4109902586741489562, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5613047110778248728, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
   m_PrefabInstance: {fileID: 1298144257824769337}
   m_PrefabAsset: {fileID: 0}
 --- !u!198 &1298144257824769339 stripped
 ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4109902586741413076, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
-  m_PrefabInstance: {fileID: 1298144257824769337}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1298144257824769340 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4109902586741393636, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
-  m_PrefabInstance: {fileID: 1298144257824769337}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1298144257824769341 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 4109902586741471394, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
-  m_PrefabInstance: {fileID: 1298144257824769337}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1298144257824769342 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6432359265179807982, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
-  m_PrefabInstance: {fileID: 1298144257824769337}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &1298144257824769343 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6433032644967565498, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1572322645499009380, guid: 8721bcc2fec04401fa006e2540b774cc, type: 3}
   m_PrefabInstance: {fileID: 1298144257824769337}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1473338353882178317
@@ -9871,6 +9854,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4e34a04fee7d4082a15c8b8c784e72f, type: 3}
+--- !u!198 &2591363742005556555 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6031475105915071827, guid: e4e34a04fee7d4082a15c8b8c784e72f, type: 3}
+  m_PrefabInstance: {fileID: 2591363742005556554}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2591363742005556556 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3932514590841854607, guid: e4e34a04fee7d4082a15c8b8c784e72f, type: 3}
+  m_PrefabInstance: {fileID: 2591363742005556554}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3184041424348150673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9923,11 +9916,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Green World
       objectReference: {fileID: 0}
+    - target: {fileID: 9180399214613022800, guid: d9a451eb3e9504c339637b83e1006be9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9a451eb3e9504c339637b83e1006be9, type: 3}
+--- !u!198 &3184041424348150674 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 910503390210945935, guid: d9a451eb3e9504c339637b83e1006be9, type: 3}
+  m_PrefabInstance: {fileID: 3184041424348150673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &3240519719239225897
 MeshRenderer:
   m_ObjectHideFlags: 0
