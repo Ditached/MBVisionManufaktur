@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.PolySpatial;
 using UnityEngine;
@@ -75,29 +76,39 @@ public class VideoSwitcher : MonoBehaviour
     }
 
 
+    //TODO @Seppi, Change this
+    // Particle system can be destroyed error
     private void HandleWorldChanged(LackWorld world)
     {
-        if (!meshRenderer.enabled)
+        try
         {
-            meshRenderer.enabled = true;
+            if (!meshRenderer.enabled)
+            {
+                meshRenderer.enabled = true;
+            }
+        
+            switch (world)
+            {
+                case LackWorld.Sandstone:
+                    material.material.SetTexture("_BaseMap", sandstoneVideo);
+                    PlayForSeconds(particleSystemSandstone, particlesTime);
+                    break;
+                case LackWorld.Crystal:
+                    material.material.SetTexture("_BaseMap", crystalVideo);
+                    PlayForSeconds(particleSystemCrystal, particlesTime);
+                    break;
+                case LackWorld.Jungle:
+                    material.material.SetTexture("_BaseMap", jungleVideo);
+                    PlayForSeconds(particleSystemJungle, particlesTime);
+                    break;
+                default:
+                    break;
+            }
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarning("error... Seppi: I will change this anyway");
         }
         
-        switch (world)
-        {
-            case LackWorld.Sandstone:
-                material.material.SetTexture("_BaseMap", sandstoneVideo);
-                PlayForSeconds(particleSystemSandstone, particlesTime);
-                break;
-            case LackWorld.Crystal:
-                material.material.SetTexture("_BaseMap", crystalVideo);
-                PlayForSeconds(particleSystemCrystal, particlesTime);
-                break;
-            case LackWorld.Jungle:
-                material.material.SetTexture("_BaseMap", jungleVideo);
-                PlayForSeconds(particleSystemJungle, particlesTime);
-                break;
-            default:
-                break;
-        }
     }
 }
