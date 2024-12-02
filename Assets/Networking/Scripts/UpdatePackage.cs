@@ -9,7 +9,7 @@ public enum MsgType : byte
     Ping = 0,
     Update = 1,
     Pong = 2,
-    Reserved = 3,
+    RequestChange = 3,
 }
 
 public enum AppState : byte
@@ -34,44 +34,54 @@ public struct UpdatePackage
     public ushort chipState; // 2 bytes
     public ushort buildNumber; // 2 bytes
     public bool inConfigMode; // 1 byte
-    
-    public static 
-    
-    public static UpdatePackage CreatePong(ushort bNum)
+
+    public static UpdatePackage CreateBasePackage()
     {
         return new UpdatePackage()
         {
-            msgType = MsgType.Pong,
             id = nextId++,
             chipState = globalChipState,
             appState = globalAppState,
-            buildNumber = bNum,
             inConfigMode = configMode
         };
+    }
+    
+    public UpdatePackage SetMsgType(MsgType type)
+    {
+        msgType = type;
+        return this;
+    }
+    
+    public UpdatePackage SetBuildNumber(ushort bNum)
+    {
+        buildNumber = bNum;
+        return this;
+    }
+    
+    public UpdatePackage SetAppState(AppState state)
+    {
+        appState = state;
+        return this;
+    }
+
+    public static UpdatePackage CreateRequestChangeForAppState(AppState appState)
+    {
+        return CreateBasePackage().SetMsgType(MsgType.RequestChange).SetAppState(appState);
+    }
+    
+    public static UpdatePackage CreatePong(ushort bNum)
+    {
+        return CreateBasePackage().SetMsgType(MsgType.Pong).SetBuildNumber(bNum);
     }
     
     public static UpdatePackage CreatePing()
     {
-        return new UpdatePackage
-        {
-            msgType = MsgType.Ping,
-            id = nextId++,
-            chipState = globalChipState,
-            appState = globalAppState,
-            inConfigMode = configMode
-        };
+        return CreateBasePackage().SetMsgType(MsgType.Ping);
     }
 
     public static UpdatePackage CreateChipStatePackage()
     {
-        return new UpdatePackage
-        {
-            msgType = MsgType.Update,
-            id = nextId++,
-            chipState = globalChipState,
-            appState = globalAppState,
-            inConfigMode = configMode
-        };
+        return CreateBasePackage().SetMsgType(MsgType.Update);
     }
 
     // Helper method to create bytes

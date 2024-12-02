@@ -1927,6 +1927,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 848179224629243415}
+    - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1936,7 +1940,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ChipState, Assembly-CSharp
+      value: DebugPanelUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -2694,6 +2698,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 848179224629243415}
+    - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -2703,7 +2711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: ChipState, Assembly-CSharp
+      value: DebugPanelUI, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1889599445223471577, guid: 0e18c185b4c5748b196813d297f728b8, type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

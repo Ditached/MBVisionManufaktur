@@ -32,7 +32,7 @@ public class UDP_MulticastSender : MonoBehaviour
             Debug.Log($"[MULTICAST SENDER] Multicast sender initialized on {multicastAddress}:{port}");
 
             InvokeRepeating(nameof(SendPing), 0, pingInterval);
-            InvokeRepeating(nameof(SendChipState), 0, chipStateInterval);
+            //InvokeRepeating(nameof(SendChipState), 0, chipStateInterval);
         }
         catch (Exception e)
         {

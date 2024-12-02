@@ -98,7 +98,11 @@ public class UDP_MulticastReceiver : MonoBehaviour
     {
         if (remoteEndPoint == null) return;
         client.Send(bytes, bytes.Length, remoteEndPoint);
-        
+    }
+
+    public void RequestAppStateChange(AppState state)
+    {
+        SendUDPMessage(UpdatePackage.CreateRequestChangeForAppState(state).ToBytes());
     }
 
     private void CreateConnection()

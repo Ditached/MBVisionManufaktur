@@ -9,6 +9,17 @@ public class DebugPanelUI : MonoBehaviour
     public TMP_Text appStateText;
     public List<ChipStateButton> chipStateButtons;
 
+    public void SetToRunning()
+    {
+        UpdatePackage.globalAppState = AppState.Running;
+        FindFirstObjectByType<UDP_MulticastReceiver>().RequestAppStateChange(AppState.Running);
+    }
+    
+    public void SetToWaiting()
+    {
+        UpdatePackage.globalAppState = AppState.Waiting;
+        FindFirstObjectByType<UDP_MulticastReceiver>().RequestAppStateChange(AppState.Waiting);
+    }
     
     [Button]
     private void OnValidate()
