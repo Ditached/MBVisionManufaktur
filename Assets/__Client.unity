@@ -7058,11 +7058,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8008777578812531081, guid: 14a2431a087384174b105b147a525f82, type: 3}
   m_PrefabInstance: {fileID: 265627060487111967}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1034608095 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 748328082717060683, guid: 14a2431a087384174b105b147a525f82, type: 3}
-  m_PrefabInstance: {fileID: 265627060487111967}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &1070218900 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 954969742130923336, guid: d9a451eb3e9504c339637b83e1006be9, type: 3}
@@ -7107,7 +7102,7 @@ MonoBehaviour:
   fadeSpeed: 0.25
   lackConfigCollection: {fileID: 11400000, guid: 02c57d5ce99d04152ad53d3d70552eff, type: 2}
   chipState: {fileID: 1752530214}
-  lackMeshRenderer: {fileID: 1034608095}
+  lackMeshRenderer: {fileID: 1186784615}
   dissolverPlane: {fileID: 417528698}
   dissolverPlaneFadeOutY: -1.8
   dissolverPlaneFadeInY: 5
@@ -7740,6 +7735,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &1186784615 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4889170887600104107, guid: 14a2431a087384174b105b147a525f82, type: 3}
+  m_PrefabInstance: {fileID: 265627060487111967}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1236939358 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3580565638202817588, guid: e4e34a04fee7d4082a15c8b8c784e72f, type: 3}
