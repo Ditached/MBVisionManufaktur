@@ -141,7 +141,7 @@ Material:
     - _MainTransitionNoiseMovementStrength: 0.404
     - _MainTransitionRadialLengthScale: -0.13
     - _MainTransitionRadialScale: 0.76
-    - _MainTransitionSlider: 0
+    - _MainTransitionSlider: 1
     - _Metallic: 0
     - _Normal_Strenght: 1
     - _OcclusionStrength: 1
@@ -156,7 +156,7 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Tiling_for_Paint: 35
+    - _Tiling_for_Paint: 20
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
