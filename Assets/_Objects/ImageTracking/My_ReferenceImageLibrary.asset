@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: My_ReferenceImageLibrary
+  m_EditorClassIdentifier: 
+  m_GuidLow: 5105608102468486378
+  m_GuidHigh: 4557634675205688713
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4839537554466498832
+      m_GuidHigh: 13183172856647481218
+    m_SerializedTextureGuid:
+      m_GuidLow: 14138622375928602332
+      m_GuidHigh: 4491098564401550875
+    m_Size: {x: 0.21, y: 0.14869408}
+    m_SpecifySize: 1
+    m_Name: Flyer
+    m_Texture: {fileID: 2800000, guid: 2a9d1edc7a24c4361bd66b765996533e, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 4941056672825388085
+      m_GuidHigh: 12141966017943703681
+    m_SerializedTextureGuid:
+      m_GuidLow: 14166517090762845526
+      m_GuidHigh: 5526663105447893418
+    m_Size: {x: 0.75, y: 0.75}
+    m_SpecifySize: 1
+    m_Name: Marker
+    m_Texture: {fileID: 0}
