@@ -13,10 +13,6 @@ public class VideoSwitcher : MonoBehaviour
     public VideoClip crystalVideo;
     public VideoClip jungleVideo;
     
-    public ScalePlane redWorldShadows;
-    public ScalePlane blueWorldShadows;
-    public ScalePlane greenWorldShadows;
-    
     public ParticleSystem[] particleSystemSandstone;
     public ParticleSystem[] particleSystemCrystal;
     public ParticleSystem[] particleSystemJungle;
@@ -119,15 +115,15 @@ public class VideoSwitcher : MonoBehaviour
             switch (world)
             {
                 case LackWorld.Sandstone:
-                    redWorldShadows.ScaleAllObjects();
+                   // redWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemSandstone, particlesTime);
                     break;
                 case LackWorld.Crystal:
-                    blueWorldShadows.ScaleAllObjects();
+                    //blueWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemCrystal, particlesTime);
                     break;
                 case LackWorld.Jungle:
-                    greenWorldShadows.ScaleAllObjects();
+                    //greenWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemJungle, particlesTime);
                     break;
                 default:
