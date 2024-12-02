@@ -68,6 +68,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
                 chipState.chipState = msg.chipState;
                 UpdatePackage.globalAppState = msg.appState;
                 UpdatePackage.globalChipState = msg.chipState;
+                UpdatePackage.configMode = msg.inConfigMode;
 
                 if (msg.msgType == MsgType.Ping)
                 {
@@ -93,6 +94,13 @@ public class UDP_MulticastReceiver : MonoBehaviour
         }
     }
 
+    private void SendUDPMessage(byte[] bytes)
+    {
+        if (remoteEndPoint == null) return;
+        client.Send(bytes, bytes.Length, remoteEndPoint);
+        
+    }
+
     private void CreateConnection()
     {
         TryDestroyConnection();
@@ -101,9 +109,14 @@ public class UDP_MulticastReceiver : MonoBehaviour
         {
             client = new UdpClient();
             client.Client.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReuseAddress, true);
-            client.Client.Bind(new IPEndPoint(IPAddress.Any, port));
+
+            var endPoint = new IPEndPoint(IPAddress.Any, port);
+            Debug.Log($"[MULTICAST RECEIVER] Binding to {endPoint.Address.ToString()}");
+            
+            client.Client.Bind(endPoint);
             client.JoinMulticastGroup(IPAddress.Parse(multicastAddress));
             client.MulticastLoopback = doLoopback;
+            
             remoteEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
             isInitialized = true;
