@@ -11,6 +11,8 @@ public class RotationController : MonoBehaviour
 
     private void Update()
     {
+        running = UpdatePackage.globalRotationRunning;
+        
         if(!running) return;
 
         if (UpdatePackage.globalAppState == AppState.Waiting)

@@ -53,8 +53,14 @@ public class UDP_VisionPingReceiver : MonoBehaviour
             } else if (package.msgType == MsgType.RequestChange)
             {
                 Debug.Log($"Received RequestChange from {endpoint.Address}");
+                
                 UpdatePackage.globalAppState = package.appState;
+                UpdatePackage.globalRotationRunning = package.rotationRunning;
+                
                 FindFirstObjectByType<UDP_MulticastSender>().SendPing();
+            } else if (package.msgType == MsgType.ResetRotation)
+            {
+                UpdatePackage.globalPlattformRotation = UpdatePackage.basePlattformRotation;
             }
         }
         catch (Exception e)
