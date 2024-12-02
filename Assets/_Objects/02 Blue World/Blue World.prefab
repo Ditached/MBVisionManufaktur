@@ -532,6 +532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8396837606184783791}
+  - component: {fileID: 5503947885343727990}
   m_Layer: 7
   m_Name: Blue World
   m_TagString: Untagged
@@ -558,6 +559,30 @@ Transform:
   - {fileID: 5871287688043849341}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5503947885343727990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508434196734967443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a276f4d3a4eb64a3b8f250ba815f6bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToScale:
+  - {fileID: 3187167120904069874}
+  - {fileID: 6843489925692966542}
+  - {fileID: 6197565415690063558}
+  - {fileID: 8666843224565445136}
+  - {fileID: 6476867822651159888}
+  - {fileID: 7636027765316847197}
+  - {fileID: 1629711838501550251}
+  - {fileID: 4085561491003555020}
+  - {fileID: 5397061129265426273}
+  - {fileID: 1420075509368601218}
+  duration: 3
 --- !u!1 &5397061129265426273
 GameObject:
   m_ObjectHideFlags: 0
