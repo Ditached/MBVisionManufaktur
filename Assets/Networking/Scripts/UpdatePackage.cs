@@ -35,6 +35,8 @@ public struct UpdatePackage
     public ushort buildNumber; // 2 bytes
     public bool inConfigMode; // 1 byte
     
+    public static 
+    
     public static UpdatePackage CreatePong(ushort bNum)
     {
         return new UpdatePackage()

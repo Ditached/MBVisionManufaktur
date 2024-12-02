@@ -94,6 +94,13 @@ public class UDP_MulticastReceiver : MonoBehaviour
         }
     }
 
+    private void SendUDPMessage(byte[] bytes)
+    {
+        if (remoteEndPoint == null) return;
+        client.Send(bytes, bytes.Length, remoteEndPoint);
+        
+    }
+
     private void CreateConnection()
     {
         TryDestroyConnection();

@@ -33,7 +33,7 @@ public class AttachToAnchor : MonoBehaviour
         var anchor = FindFirstObjectByType<Anchor>();
         if (anchor == null)
         {
-            transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+            //transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
             return;
         }
 
