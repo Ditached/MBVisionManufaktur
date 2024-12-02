@@ -506,7 +506,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f4a3d8ebf5d347238808f4edfac78ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lackConfigCollection: {fileID: 0}
+  notifyClientsOnChange: 1
+  udpMulticastSender: {fileID: 1272840699}
+  lackConfigCollection: {fileID: 11400000, guid: 02c57d5ce99d04152ad53d3d70552eff, type: 2}
   updateGlobalState: 1
   chipState: 0
   chipStateString: 
@@ -2445,8 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6f3ac71536a45798f6b7811dc2e9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pingInterval: 0.5
-  chipStateInterval: 0.2
+  pingInterval: 0.33
   multicastLoopback: 1
   port: 5000
   multicastAddress: 239.255.255.252

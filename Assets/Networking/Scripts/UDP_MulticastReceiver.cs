@@ -97,11 +97,13 @@ public class UDP_MulticastReceiver : MonoBehaviour
     private void SendUDPMessage(byte[] bytes)
     {
         if (remoteEndPoint == null) return;
-        client.Send(bytes, bytes.Length, remoteEndPoint);
+        client.Send(bytes, bytes.Length, new IPEndPoint(IPAddress.Parse(remoteEndPoint.Address.ToString()), serverPort));
+        Debug.Log($"Sent message to {remoteEndPoint.Address} with Size: {bytes.Length} Bytes");
     }
 
     public void RequestAppStateChange(AppState state)
     {
+        Debug.Log($"Requesting app state change to {state}");
         SendUDPMessage(UpdatePackage.CreateRequestChangeForAppState(state).ToBytes());
     }
 
