@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2983836644854603403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5752509525966484816}
+  - component: {fileID: 7129470067164185555}
+  m_Layer: 0
+  m_Name: SoundFXController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5752509525966484816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983836644854603403}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.14452608, y: 0.6321466, z: 5.8724995}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7129470067164185555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2983836644854603403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c576bbf401c6345ab84342f8986793ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundEffects:
+  - name: Lack_Activate
+    clip: {fileID: 8300000, guid: 1c189fa4219b8461bbce9cae0ac8974c, type: 3}
+  - name: Lack_Reveal_Green
+    clip: {fileID: 8300000, guid: 49b5b92e1fddd4e12a7cee86c7093f0b, type: 3}
+  - name: Lack_Reveal_Red
+    clip: {fileID: 8300000, guid: 3baaed1a5d585472ab72e0d32f322d1c, type: 3}
+  - name: Lack_Reveal_Blue
+    clip: {fileID: 8300000, guid: c9f570a74847f49639c68d907facbfd0, type: 3}
+  - name: Lack_Dissolve_Green
+    clip: {fileID: 8300000, guid: 89b23b71ee663484384de50f61e23169, type: 3}
+  - name: Lack_Dissolve_Red
+    clip: {fileID: 8300000, guid: bf77905ae491f4b5fb00ef570b45447e, type: 3}
+  - name: Lack_Dissolve_Blue
+    clip: {fileID: 8300000, guid: 7cbbe845e4ed14fe0bc6f0888b466bb5, type: 3}
