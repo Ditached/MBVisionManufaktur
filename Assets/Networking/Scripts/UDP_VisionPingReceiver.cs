@@ -50,6 +50,10 @@ public class UDP_VisionPingReceiver : MonoBehaviour
                 visionConnectionUI_gameobject.visionConnection = connectionData;
                 visionConnectionUI_gameobject.udpVisionPingReceiver = this;
                 visionConnectionUI_gameobject.ip = endpoint.Address.ToString();
+            } else if (package.msgType == MsgType.RequestChange)
+            {
+                UpdatePackage.globalAppState = package.appState;
+                FindFirstObjectByType<UDP_MulticastSender>().SendPing();
             }
         }
         catch (Exception e)
