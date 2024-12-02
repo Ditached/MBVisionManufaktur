@@ -262,6 +262,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1571830762754005169, guid: fc16a82b5459c4934abea0980afa516b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571830762754005169, guid: fc16a82b5459c4934abea0980afa516b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571830762754005169, guid: fc16a82b5459c4934abea0980afa516b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.016
+      objectReference: {fileID: 0}
     - target: {fileID: 2849124321420830335, guid: fc16a82b5459c4934abea0980afa516b, type: 3}
       propertyPath: m_Name
       value: S-Klasse UV23
