@@ -66,12 +66,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
                 lastMsgId = currMsgID;
                 
                 chipState.chipState = msg.chipState;
-                UpdatePackage.globalAppState = msg.appState;
-                UpdatePackage.globalChipState = msg.chipState;
-                UpdatePackage.globalPlattformRotation = msg.plattformRotation;
-                UpdatePackage.globalPlattformSpeed = msg.plattformSpeed;
-                
-                UpdatePackage.configMode = msg.inConfigMode;
+                UpdatePackage.ApplyReceivedPackage(msg);
 
                 if (msg.msgType == MsgType.Ping)
                 {
@@ -108,6 +103,20 @@ public class UDP_MulticastReceiver : MonoBehaviour
     {
         Debug.Log($"Requesting app state change to {state}");
         SendUDPMessage(UpdatePackage.CreateRequestChangeForAppState(state).ToBytes());
+    }
+    
+    public void RequestRotationRunningChange(bool running)
+    {
+        Debug.Log($"Requesting rotation running to {running}");
+        
+        UpdatePackage.globalRotationRunning = running;
+        SendUDPMessage(UpdatePackage.CreateRequestChangeForPlatformRotationRunning(running).ToBytes());
+    }
+    
+    public void RequestResetRotation()
+    {
+        UpdatePackage.globalPlattformRotation = UpdatePackage.basePlattformRotation;
+        SendUDPMessage(UpdatePackage.CreateResetRotation().ToBytes());
     }
 
     private void CreateConnection()

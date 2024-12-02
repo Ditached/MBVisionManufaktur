@@ -3,13 +3,13 @@ using System.Runtime.InteropServices;
 using UnityEngine.Serialization;
 
 
-// Enum for message types (uses 1 byte)
-public enum MsgType : byte
+public enum MsgType : ushort
 {
     Ping = 0,
     Update = 1,
     Pong = 2,
     RequestChange = 3,
+    ResetRotation = 4,
 }
 
 public enum AppState : byte
@@ -27,10 +27,12 @@ public struct UpdatePackage
     public static AppState globalAppState = AppState.Waiting;
     public static ushort globalChipState = 0;
     public static float globalPlattformRotation = 0f;
+    public static float basePlattformRotation = 0f;
     public static float globalPlattformSpeed = 0f;
+    public static bool globalRotationRunning = true;
     public static uint nextId = 0;
 
-    public MsgType msgType; // 1 byte
+    public MsgType msgType; // 2 byte
     public AppState appState; // 1 byte
     public uint id; // 4 bytes
     public ushort chipState; // 2 bytes
@@ -38,6 +40,7 @@ public struct UpdatePackage
     public bool inConfigMode; // 1 byte
     public float plattformRotation; // 4 bytes
     public float plattformSpeed;
+    public bool rotationRunning;
 
     public static UpdatePackage CreateBasePackage()
     {
@@ -48,8 +51,19 @@ public struct UpdatePackage
             appState = globalAppState,
             inConfigMode = configMode,
             plattformRotation = globalPlattformRotation,
-            plattformSpeed = globalPlattformSpeed
+            plattformSpeed = globalPlattformSpeed,
+            rotationRunning = globalRotationRunning
         };
+    }
+
+    public static void ApplyReceivedPackage(UpdatePackage package)
+    {
+        globalChipState = package.chipState;
+        globalAppState = package.appState;
+        globalPlattformRotation = package.plattformRotation;
+        globalPlattformSpeed = package.plattformSpeed;
+        globalRotationRunning = package.rotationRunning;
+        configMode = package.inConfigMode;
     }
     
     public UpdatePackage SetMsgType(MsgType type)
@@ -70,10 +84,26 @@ public struct UpdatePackage
         return this;
     }
     
+    public UpdatePackage SetRotationRunning(bool running)
+    {
+        rotationRunning = running;
+        return this;
+    }
+    
 
     public static UpdatePackage CreateRequestChangeForAppState(AppState appState)
     {
         return CreateBasePackage().SetMsgType(MsgType.RequestChange).SetAppState(appState);
+    }
+    
+    public static UpdatePackage CreateRequestChangeForPlatformRotationRunning(bool running)
+    {
+        return CreateBasePackage().SetMsgType(MsgType.RequestChange).SetRotationRunning(running);
+    }
+    
+    public static UpdatePackage CreateResetRotation()
+    {
+        return CreateBasePackage().SetMsgType(MsgType.ResetRotation);
     }
     
     public static UpdatePackage CreatePong(ushort bNum)
