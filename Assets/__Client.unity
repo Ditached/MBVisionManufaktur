@@ -9102,10 +9102,6 @@ PrefabInstance:
       propertyPath: chipState
       value: 
       objectReference: {fileID: 1752530214}
-    - target: {fileID: 2334860215928405991, guid: dbcd28a7761ae452aa013befe0a75fec, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1752530214}
     - target: {fileID: 2656655626869953037, guid: dbcd28a7761ae452aa013befe0a75fec, type: 3}
       propertyPath: chipState
       value: 
@@ -9148,10 +9144,6 @@ PrefabInstance:
       objectReference: {fileID: 1411947931}
     - target: {fileID: 6434680527468247122, guid: dbcd28a7761ae452aa013befe0a75fec, type: 3}
       propertyPath: chipState
-      value: 
-      objectReference: {fileID: 1752530214}
-    - target: {fileID: 6950003891719157382, guid: dbcd28a7761ae452aa013befe0a75fec, type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1752530214}
     - target: {fileID: 7118236288185559869, guid: dbcd28a7761ae452aa013befe0a75fec, type: 3}
