@@ -8,6 +8,6 @@ public class MarkDirty : MonoBehaviour
     void Update()
     {
         PolySpatialObjectUtils.MarkDirty(rt);
-        PolySpatialObjectUtils.MarkDirty(GetComponent<Renderer>());
+        //PolySpatialObjectUtils.MarkDirty(GetComponent<Renderer>());
     }
 }
