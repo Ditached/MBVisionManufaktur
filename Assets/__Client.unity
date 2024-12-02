@@ -720,7 +720,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 184895503}
   serializedVersion: 8
-  lengthInSec: 16.92
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -902,7 +902,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0, g: 1, b: 0.9329295, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7122,9 +7122,9 @@ MonoBehaviour:
   undergroundLight: {fileID: 2119210634}
   particles: {fileID: 184895505}
   defaultColor: {r: 0, g: 1, b: 0.93333334, a: 1}
-  sandstoneColor: {r: 1, g: 0, b: 0, a: 1}
-  crystalColor: {r: 0, g: 0, b: 1, a: 1}
-  jungleColor: {r: 0, g: 1, b: 0.016949177, a: 1}
+  sandstoneColor: {r: 0.8962264, g: 0.4169262, b: 0.2325116, a: 1}
+  crystalColor: {r: 0.21266466, g: 0.5333866, b: 0.764151, a: 1}
+  jungleColor: {r: 0.21003917, g: 0.754717, b: 0.21858314, a: 1}
   activeLackConfig:
     name: 
     material: {fileID: 0}

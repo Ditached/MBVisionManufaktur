@@ -178,13 +178,6 @@ public class LackSwitcher : MonoBehaviour
         }
 
         // Apply the color to underground light and particles
-        undergroundLight.color = Color.Lerp(undergroundLight.color, worldColor, Time.deltaTime * fadeSpeed);
-        
-        var main = particles.main;
-        var startColor = main.startColor;
-        ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient(Color.Lerp(startColor.color, worldColor, Time.deltaTime * fadeSpeed));
-        main.startColor = newGradient;
-        
         debugTargetValue = targetValue;
         var val = _materialPropertyBlock.GetFloat(MainTransitionSlider);
         val = Mathf.MoveTowards(val, targetValue, Time.deltaTime * fadeSpeed);
@@ -193,7 +186,17 @@ public class LackSwitcher : MonoBehaviour
         
         var planePosY = Mathf.Lerp(dissolverPlaneFadeOutY, dissolverPlaneFadeInY, val);
         dissolverPlane.localPosition = new Vector3(dissolverPlane.localPosition.x, planePosY, dissolverPlane.localPosition.z);
+        
+        undergroundLight.color = Color.Lerp(defaultColor, worldColor, val);
 
+        
+        var main = particles.main;
+        var startColor = main.startColor;
+        ParticleSystem.MinMaxGradient newGradient = new ParticleSystem.MinMaxGradient(Color.Lerp(Color.white, worldColor, val));
+        main.startColor = newGradient;
+
+        
+        
         if(currentShadows != null) currentShadows.SetScalePercentage(val);
         if (currentAudio != null) currentAudio.volume = val;
         
