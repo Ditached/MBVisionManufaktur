@@ -23,6 +23,7 @@ public enum AppState : byte
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct UpdatePackage
 {
+    public static bool configMode = false;
     public static AppState globalAppState = AppState.Waiting;
     public static ushort globalChipState = 0;
     public static uint nextId = 0;
@@ -32,6 +33,7 @@ public struct UpdatePackage
     public uint id; // 4 bytes
     public ushort chipState; // 2 bytes
     public ushort buildNumber; // 2 bytes
+    public bool inConfigMode; // 1 byte
     
     public static UpdatePackage CreatePong(ushort bNum)
     {
@@ -41,7 +43,8 @@ public struct UpdatePackage
             id = nextId++,
             chipState = globalChipState,
             appState = globalAppState,
-            buildNumber = bNum
+            buildNumber = bNum,
+            inConfigMode = configMode
         };
     }
     
@@ -52,7 +55,8 @@ public struct UpdatePackage
             msgType = MsgType.Ping,
             id = nextId++,
             chipState = globalChipState,
-            appState = globalAppState
+            appState = globalAppState,
+            inConfigMode = configMode
         };
     }
 
@@ -63,7 +67,8 @@ public struct UpdatePackage
             msgType = MsgType.Update,
             id = nextId++,
             chipState = globalChipState,
-            appState = globalAppState
+            appState = globalAppState,
+            inConfigMode = configMode
         };
     }
 

@@ -22,6 +22,8 @@ public class AnchorMaster : MonoBehaviour
     
     private void Update()
     {
+        IsInConfigMode = UpdatePackage.configMode;
+        
         if(arTrackedImageManager == null)
             arTrackedImageManager = FindFirstObjectByType<ARTrackedImageManager>(FindObjectsInactive.Include);
         

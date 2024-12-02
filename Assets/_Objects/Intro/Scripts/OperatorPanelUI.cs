@@ -10,10 +10,19 @@ public class OperatorPanelUI : MonoBehaviour
     public Button WaitingButton;
     public Button RunningButton;
 
+    public Button ConfigButton;
+
     private void Start()
     {
         WaitingButton.onClick.AddListener(OnWaitingBtnClick);
         RunningButton.onClick.AddListener(OnReadyBtnClick);
+        
+        ConfigButton.onClick.AddListener(OnConfigBtnClick);
+    }
+
+    private void OnConfigBtnClick()
+    {
+        UpdatePackage.configMode = !UpdatePackage.configMode;
     }
 
     private void OnReadyBtnClick()
@@ -30,5 +39,7 @@ public class OperatorPanelUI : MonoBehaviour
     {
         WaitingButton.image.color = UpdatePackage.globalAppState == AppState.Waiting ? activeColor : inactiveColor;
         RunningButton.image.color = UpdatePackage.globalAppState == AppState.Running ? activeColor : inactiveColor;
+        
+        ConfigButton.image.color = UpdatePackage.configMode ? activeColor : inactiveColor;
     }
 }

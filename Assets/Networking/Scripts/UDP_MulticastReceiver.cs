@@ -68,6 +68,7 @@ public class UDP_MulticastReceiver : MonoBehaviour
                 chipState.chipState = msg.chipState;
                 UpdatePackage.globalAppState = msg.appState;
                 UpdatePackage.globalChipState = msg.chipState;
+                UpdatePackage.configMode = msg.inConfigMode;
 
                 if (msg.msgType == MsgType.Ping)
                 {

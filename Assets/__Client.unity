@@ -10930,7 +10930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arTrackedImageManager: {fileID: 1503524549}
   imageTrackingReaction: {fileID: 1503524548}
-  IsInConfigMode: 1
+  IsInConfigMode: 0
 --- !u!1001 &2024981859
 PrefabInstance:
   m_ObjectHideFlags: 0
