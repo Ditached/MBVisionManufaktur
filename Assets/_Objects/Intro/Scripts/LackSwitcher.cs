@@ -26,6 +26,14 @@ public class LackSwitcher : MonoBehaviour
     public Transform crystalWorld;
     public Transform jungleWorld;
 
+    public ScalePlane sandstoneShadows;
+    public ScalePlane crystalShadows;
+    public ScalePlane jungleShadows;
+    
+    private ScalePlane currentShadows;
+    
+    
+
     private Transform currentWorld;
     
     public Light undergroundLight;
@@ -105,17 +113,21 @@ public class LackSwitcher : MonoBehaviour
             if (_materialPropertyBlock.GetFloat(MainTransitionSlider) <= 0f)
             {
                 if(currentWorld != null) currentWorld.gameObject.SetActive(false);
+                if(currentShadows != null) currentShadows.SetScalePercentage(0f);
 
                 switch (activeLackConfig.lackWorld)
                 {
                     case LackWorld.Sandstone:
                         currentWorld = sandstoneWorld;
+                        currentShadows = sandstoneShadows;
                         break;
                     case LackWorld.Crystal:
                         currentWorld = crystalWorld;
+                        currentShadows = crystalShadows;
                         break;
                     case LackWorld.Jungle:
                         currentWorld = jungleWorld;
+                        currentShadows = jungleShadows;
                         break;
                 }
                 
@@ -172,6 +184,7 @@ public class LackSwitcher : MonoBehaviour
         var planePosY = Mathf.Lerp(dissolverPlaneFadeOutY, dissolverPlaneFadeInY, val);
         dissolverPlane.localPosition = new Vector3(dissolverPlane.localPosition.x, planePosY, dissolverPlane.localPosition.z);
 
+        if(currentShadows != null) currentShadows.SetScalePercentage(val);
         
         _materialPropertyBlock.SetFloat(MainTransitionSlider, val);
         propertyBlockValue = _materialPropertyBlock.GetFloat(MainTransitionSlider);

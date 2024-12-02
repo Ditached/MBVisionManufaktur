@@ -7,13 +7,11 @@ using UnityEngine.Video;
 
 public class VideoSwitcher : MonoBehaviour
 {
-    public Texture sandstoneVideo;
-    public Texture crystalVideo;
-    public Texture jungleVideo;
+    public VideoPlayer videoPlayer;
     
-    public ScalePlane redWorldShadows;
-    public ScalePlane blueWorldShadows;
-    public ScalePlane greenWorldShadows;
+    public VideoClip sandstoneVideo;
+    public VideoClip crystalVideo;
+    public VideoClip jungleVideo;
     
     public ParticleSystem[] particleSystemSandstone;
     public ParticleSystem[] particleSystemCrystal;
@@ -22,14 +20,14 @@ public class VideoSwitcher : MonoBehaviour
     public float particlesTime = 3f;
 
     private Renderer material;
-    private MeshRenderer meshRenderer;
+    //private MeshRenderer meshRenderer;
 
 
     private void Awake()
     {
         material = GetComponent<Renderer>();
-        meshRenderer = GetComponent<MeshRenderer>();
-        meshRenderer.enabled = false;
+        //meshRenderer = GetComponent<MeshRenderer>();
+        //meshRenderer.enabled = false;
     }
 
     private void OnEnable()
@@ -52,10 +50,12 @@ public class VideoSwitcher : MonoBehaviour
 
     private void HandleNoWorldActive()
     {
+        /*
         if (meshRenderer.enabled)
         {
             meshRenderer.enabled = false;
         }
+        */
 
         /*videoPlayer.Stop();
         videoPlayer.Clip = null;*/
@@ -65,6 +65,7 @@ public class VideoSwitcher : MonoBehaviour
     {
         foreach (var ps in particleSystems)
         {
+            if(ps == null) continue;
             ps.Play();
         }
         StartCoroutine(StopAfterSeconds(particleSystems, seconds));
@@ -75,6 +76,7 @@ public class VideoSwitcher : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         foreach (var ps in particleSystems)
         {
+            if(ps == null) continue;
             ps.Stop();
         }
     }
@@ -84,38 +86,50 @@ public class VideoSwitcher : MonoBehaviour
     // Particle system can be destroyed error
     private void HandleWorldChanged(LackWorld world)
     {
-        try
+        Debug.Log("HandleWorldChanged");
+        
+        switch (world)
         {
-            if (!meshRenderer.enabled)
-            {
-                meshRenderer.enabled = true;
-            }
+            case LackWorld.Sandstone:
+                videoPlayer.clip = sandstoneVideo;
+                break;
+            case LackWorld.Crystal:
+                videoPlayer.clip = crystalVideo;
+                break;
+            case LackWorld.Jungle:
+                videoPlayer.clip = jungleVideo;
+                break;
+            default:
+                break;
+        }
+        
+        videoPlayer.Play();
+        
+        
+    
+            // if (!meshRenderer.enabled)
+            // {
+            //     meshRenderer.enabled = true;
+            // }
         
             switch (world)
             {
                 case LackWorld.Sandstone:
-                    material.material.SetTexture("_BaseMap", sandstoneVideo);
-                    redWorldShadows.ScaleAllObjects();
+                   // redWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemSandstone, particlesTime);
                     break;
                 case LackWorld.Crystal:
-                    material.material.SetTexture("_BaseMap", crystalVideo);
-                    blueWorldShadows.ScaleAllObjects();
+                    //blueWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemCrystal, particlesTime);
                     break;
                 case LackWorld.Jungle:
-                    material.material.SetTexture("_BaseMap", jungleVideo);
-                    greenWorldShadows.ScaleAllObjects();
+                    //greenWorldShadows.ScaleAllObjects();
                     PlayForSeconds(particleSystemJungle, particlesTime);
                     break;
                 default:
                     break;
             }
-        }
-        catch (Exception e)
-        {
-            Debug.LogWarning("error... Seppi: I will change this anyway");
-        }
+     
         
     }
 }

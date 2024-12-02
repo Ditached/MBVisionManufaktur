@@ -9,6 +9,32 @@ public class ScalePlane : MonoBehaviour
     public float duration = 3f;
     // Duration of the scaling effect
 
+    private Vector3[] ogScales;
+    
+    private void Awake()
+    {
+        ogScales = new Vector3[objectsToScale.Count];
+        
+        for (int i = 0; i < objectsToScale.Count; i++)
+        {
+            ogScales[i] = objectsToScale[i].transform.localScale;
+            objectsToScale[i].transform.localScale = Vector3.zero;
+        }
+    }
+    
+    public void SetScalePercentage(float percentage)
+    {
+        for (var index = 0; index < objectsToScale.Count; index++)
+        {
+            var obj = objectsToScale[index];
+            if (obj != null)
+            {
+                obj.transform.localScale = ogScales[index] * percentage;
+            }
+        }
+    }
+    
+    /*
     public void ScaleAllObjects()
     {
         foreach (var obj in objectsToScale)
@@ -26,4 +52,5 @@ public class ScalePlane : MonoBehaviour
             }
         }
     }
+    */
 }

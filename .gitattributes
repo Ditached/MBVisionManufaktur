@@ -58,3 +58,4 @@ Assets/ScriptsAndModules/*.* -filter=lfs -diff=lfs -merge=lfs -text
 *ext filter=lfs diff=lfs merge=lfs -text
 *.tgz filter=lfs diff=lfs merge=lfs -text
 Assets/UI/Fonts/PingFang_Font_For_Linux-master/HK/PingFangHK-Semibold[[:space:]]Chinese.asset filter=lfs diff=lfs merge=lfs -text
+*.mp4 filter=lfs diff=lfs merge=lfs -text

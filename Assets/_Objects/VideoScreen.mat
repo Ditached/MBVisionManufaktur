@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: VideoScreen
-  m_Shader: {fileID: -6465566751694194690, guid: 921e3fb80163848259843d4f0fafcbcd, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: ac566105d11954eff879a459c9d8a423, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -38,7 +38,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 8400000, guid: 76d072d12662e4947b1fb11c1b41e393, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
