@@ -6304,7 +6304,7 @@ Transform:
   m_GameObject: {fileID: 417528694}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.33, y: -0.18, z: 6.12}
+  m_LocalPosition: {x: -0.33, y: -0.444, z: 6.12}
   m_LocalScale: {x: 1.8927, y: 1.8927, z: 1.8927}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6323,7 +6323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hdrEdgeColor: {r: 18.379171, g: 18.379171, b: 18.379171, a: 1}
-  edge: -0.04
+  edge: -0.08
   meshRenderers:
   - {fileID: 1590183595}
   - {fileID: 1261718598}
