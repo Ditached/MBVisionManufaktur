@@ -23,7 +23,7 @@ public class AnchorMaster : MonoBehaviour
     
     private void Update()
     {
-        var ipEndPoint = new IPEndPoint(IPAddress.Broadcast, 1200);
+        //var ipEndPoint = new IPEndPoint(IPAddress.Broadcast, 1200);
         IsInConfigMode = UpdatePackage.configMode;
         
         if(arTrackedImageManager == null)
