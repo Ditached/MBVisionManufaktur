@@ -9,7 +9,6 @@ using UnityEngine.Serialization;
 
 public class LackSwitcher : MonoBehaviour
 {
-    public AudioClip switchSound;
     [FormerlySerializedAs("fadeOutSpeed")] public float fadeSpeed = 1f;
 
     private static readonly int MainTransitionSlider = Shader.PropertyToID("_MainTransitionSlider");
@@ -32,7 +31,11 @@ public class LackSwitcher : MonoBehaviour
     
     private ScalePlane currentShadows;
     
+    public AudioSource sandstoneAudio;
+    public AudioSource crystalAudio;
+    public AudioSource jungleAudio;
     
+    private AudioSource currentAudio;
 
     private Transform currentWorld;
     
@@ -114,20 +117,27 @@ public class LackSwitcher : MonoBehaviour
             {
                 if(currentWorld != null) currentWorld.gameObject.SetActive(false);
                 if(currentShadows != null) currentShadows.SetScalePercentage(0f);
+                if (currentAudio != null) currentAudio.volume = 0f;
 
                 switch (activeLackConfig.lackWorld)
                 {
                     case LackWorld.Sandstone:
                         currentWorld = sandstoneWorld;
                         currentShadows = sandstoneShadows;
+                        currentAudio = sandstoneAudio;
+                        soundFXController.Play_Lack_RevealRed();
                         break;
                     case LackWorld.Crystal:
                         currentWorld = crystalWorld;
                         currentShadows = crystalShadows;
+                        currentAudio = crystalAudio;
+                        soundFXController.Play_Lack_RevealBlue();
                         break;
                     case LackWorld.Jungle:
                         currentWorld = jungleWorld;
                         currentShadows = jungleShadows;
+                        currentAudio = jungleAudio;
+                        soundFXController.Play_Lack_RevealGreen();
                         break;
                 }
                 
@@ -185,6 +195,7 @@ public class LackSwitcher : MonoBehaviour
         dissolverPlane.localPosition = new Vector3(dissolverPlane.localPosition.x, planePosY, dissolverPlane.localPosition.z);
 
         if(currentShadows != null) currentShadows.SetScalePercentage(val);
+        if (currentAudio != null) currentAudio.volume = val;
         
         _materialPropertyBlock.SetFloat(MainTransitionSlider, val);
         propertyBlockValue = _materialPropertyBlock.GetFloat(MainTransitionSlider);
@@ -197,10 +208,29 @@ public class LackSwitcher : MonoBehaviour
     }
 
     private Tween matTween;
+    
+    public SoundFXController soundFXController;
+    
 
     private void SwitchToMaterial(Material activeMaterial)
     {
-        if(!GetComponent<AudioSource>().isPlaying) GetComponent<AudioSource>().PlayOneShot(switchSound);
+        if(activeMaterial == targetMaterial) return;
+
+        switch (activeLackConfig.lackWorld)
+        {
+            case LackWorld.Crystal:
+                soundFXController.Play_Lack_DissolveBlue();
+                break;
+            case LackWorld.Sandstone:
+                soundFXController.Play_Lack_DissolveRed();
+                break;
+            case LackWorld.Jungle:
+                soundFXController.Play_Lack_DissolveGreen();
+                break;
+        }
+        
+        Debug.Log($"Switching to {activeMaterial.name}");
+        soundFXController.Play_Lack_Activate();
         materialChangeRequested = true;
         targetMaterial = activeMaterial;
     }
