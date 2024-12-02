@@ -21,6 +21,7 @@ public class UDP_Connector : MonoBehaviour
 
     void Awake()
     {
+        Application.targetFrameRate = 120;
         StartUDPClient();
     }
 
