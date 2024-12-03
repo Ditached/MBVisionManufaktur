@@ -10,7 +10,7 @@ public class ChipMessageGenerator
     public static string GenerateSetupMessage(int timeStart, int timeEnd)
     {
         return
-            $"{{\"SETUP\":\"1\",\"MACS\":[\"FF:FF:FF:FF:FF:FF\"],\"LED\":\"1\",\"TIME\":[\"{timeStart}\",\"{timeEnd}\"],\"BAT\":[\"3.5\",\"4.2\"]}}";
+            $"{{\"SETUP\":\"1\",\"MACS\":[\"FF:FF:FF:FF:FF:FF\"],\"LED\":\"0\",\"TIME\":[\"{timeStart}\",\"{timeEnd}\"],\"BAT\":[\"3.5\",\"4.2\"]}}";
     }
     
     public static string GeneratePingMessage()

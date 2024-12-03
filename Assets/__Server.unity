@@ -601,7 +601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   port: 6457
-  targetIP: 255.255.255.255
+  targetIP: 172.20.255.255
   targetPort: 6455
   OnMessageReceived:
     m_PersistentCalls:
@@ -631,7 +631,7 @@ MonoBehaviour:
   pingInterval: 5
   statusPingInterval: 10
   timeStart: 0
-  timeEnd: 200
+  timeEnd: 350
   chips: []
 --- !u!114 &376733009
 MonoBehaviour:
@@ -944,7 +944,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -820, y: -99}
+  m_AnchoredPosition: {x: -820, y: -39}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557473060
@@ -1621,8 +1621,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -714, y: -228}
-  m_SizeDelta: {x: 499.45508, y: 258.1197}
+  m_AnchoredPosition: {x: -29.2275, y: -230.5}
+  m_SizeDelta: {x: 1896.845, y: 441.05}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &855489839
 MonoBehaviour:
@@ -1633,7 +1633,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 855489837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
@@ -1642,14 +1642,12 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: -60.15
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 230, y: 243}
+  m_Spacing: {x: -106.4, y: -113.2}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &931559249
 GameObject:
   m_ObjectHideFlags: 0

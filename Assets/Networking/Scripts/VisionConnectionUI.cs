@@ -9,7 +9,18 @@ public class VisionConnectionUI : MonoBehaviour
 {
     public static Dictionary<string, string> ipToName = new Dictionary<string, string>()
     {
-        {"172.20.87.84", "AVP10"}
+        {"172.20.99.155", "AVP01"},
+        {"172.20.36.39", "AVP02"},
+        {"172.20.155.63", "AVP03"},
+        {"172.20.166.222", "AVP05"},
+        {"172.20.236.173", "AVP06"},
+        {"172.20.55.107", "AVP07"},
+        {"172.20.155.184", "AVP08"},
+        {"172.20.212.222", "AVP09"},
+        {"172.20.87.84", "AVP10"},
+        {"172.20.123.175", "AVP11"},
+        {"172.20.171.158", "AVP12"},
+        
     };
     
     public TMP_Text timeDissconnectedText;
