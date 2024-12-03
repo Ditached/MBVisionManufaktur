@@ -10,6 +10,7 @@ public enum MsgType : ushort
     Pong = 2,
     RequestChange = 3,
     ResetRotation = 4,
+    Test = 5,
 }
 
 public enum AppState : byte

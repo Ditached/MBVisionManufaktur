@@ -2586,7 +2586,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d6f3ac71536a45798f6b7811dc2e9df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pingInterval: 0.05
+  udpVisionPingReceiver: {fileID: 1470472727}
+  individualPingInterval: 1
+  pingInterval: 0.2
   multicastLoopback: 1
   port: 5000
   multicastAddress: 239.255.255.252

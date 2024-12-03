@@ -6,6 +6,9 @@ using UnityEngine;
 
 public class UDP_MulticastSender : MonoBehaviour
 {
+    public UDP_VisionPingReceiver udpVisionPingReceiver;
+    
+    public float individualPingInterval = 1f;
     public float pingInterval = 1f;
     
     public bool multicastLoopback = true;
@@ -31,6 +34,7 @@ public class UDP_MulticastSender : MonoBehaviour
             Debug.Log($"[MULTICAST SENDER] Multicast sender initialized on {multicastAddress}:{port}");
 
             InvokeRepeating(nameof(SendPing), 0, pingInterval);
+            InvokeRepeating(nameof(SendIndividualPings), 0.5f, individualPingInterval);
         }
         catch (Exception e)
         {
@@ -42,6 +46,21 @@ public class UDP_MulticastSender : MonoBehaviour
     {
         var package = UpdatePackage.CreatePing();
         SendUpdatePackage(package);
+    }
+
+    public void SendIndividualPings()
+    {
+        var count = 0;
+        var package = UpdatePackage.CreatePing().SetMsgType(MsgType.Test);
+
+        foreach (var visionConnection in udpVisionPingReceiver.GetConnections())
+        {
+            var ip = visionConnection.ip;
+            SendUpdatePackageIndividually(package, ip);
+            count++;
+        }
+        
+        Debug.Log($"[MULTICAST SENDER] Sent {count} individual pings");
     }
     
     public void SendChipState()
@@ -57,6 +76,19 @@ public class UDP_MulticastSender : MonoBehaviour
             var bytes = updatePackage.ToBytes();
             client.Send(bytes, bytes.Length, multicastEndPoint);
             Debug.Log($"[MULTICAST SENDER] Sent update package: {updatePackage.ToString()}");
+        } catch (Exception e)
+        {
+            Debug.LogError($"Failed to send update package: {e.Message}");
+        }
+    }
+    
+    public void SendUpdatePackageIndividually(UpdatePackage updatePackage, string ip)
+    {
+        try
+        {
+            var bytes = updatePackage.ToBytes();
+            client.Send(bytes, bytes.Length, ip, multicastEndPoint.Port);
+            Debug.Log($"[MULTICAST SENDER (INDIVIDUAL)] Sent update package: {updatePackage.ToString()} to {ip}");
         } catch (Exception e)
         {
             Debug.LogError($"Failed to send update package: {e.Message}");

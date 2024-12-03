@@ -74,6 +74,11 @@ public class UDP_MulticastReceiver : MonoBehaviour
                     var response = UpdatePackage.CreatePong(buildVersion.buildNumber).ToBytes();
                     client.Send(response, response.Length, new IPEndPoint(IPAddress.Parse(ip), serverPort));
                 }
+
+                if (msg.msgType == MsgType.Test)
+                {
+                    Debug.Log("[TEST] Received Test message");
+                }
                 
                 if (optionalDebugText != null) optionalDebugText.text = log;
                 OnMessageReceived.Invoke(msg);

@@ -12,6 +12,11 @@ public class UDP_VisionPingReceiver : MonoBehaviour
 
     private List<VisionConnection> _visionConnectionsData = new();
 
+    public VisionConnection[] GetConnections()
+    {
+        return _visionConnectionsData.ToArray();
+    }
+    
     private void Awake()
     {
         udpConnector.OnBytesReceivedWithEndPoint.AddListener(OnMessageReceived);
