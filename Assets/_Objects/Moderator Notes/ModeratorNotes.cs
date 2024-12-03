@@ -25,9 +25,6 @@ public class ModeratorNotes : MonoBehaviour
     public TextAsset json_file;
     public List<Note> notes = new();
 
-    public string jsonUrl = ""; // URL to fetch JSON from
-    public float timeout = 5f; // Timeout in seconds
-
     private int lastChapterIndex = -2;
 
     private void Awake()
@@ -42,39 +39,8 @@ public class ModeratorNotes : MonoBehaviour
 
     }
     
-    private IEnumerator LoadNotes()
+    private void LoadNotes()
     {
-        if (!string.IsNullOrEmpty(jsonUrl))
-        {
-            using (UnityWebRequest request = UnityWebRequest.Get(jsonUrl))
-            {
-                request.timeout = Mathf.RoundToInt(timeout);
-                yield return request.SendWebRequest();
-
-                if (request.result == UnityWebRequest.Result.Success)
-                {
-                    try
-                    {
-
-                        var notes = JsonConvert.DeserializeObject<Note[]>(request.downloadHandler.text);
-                        this.notes = notes.ToList();
-						Debug.Log("Loaded successfully!!");
-                        text.text = "";
-                        yield break; // Successfully loaded from URL, exit coroutine
-                    }
-                    catch (JsonException e)
-                    {
-                        Debug.LogWarning($"Failed to parse JSON from URL: {e.Message}");
-                    }
-                }
-                else
-                {
-                    Debug.LogWarning($"Failed to load JSON from URL: {request.error}");
-                }
-            }
-        }
-
-        // Fallback to local JSON file
         try
         {
             if (json_file != null)
@@ -97,26 +63,29 @@ public class ModeratorNotes : MonoBehaviour
         }
     }
 
-    /*
+    public ChipState chipState;
+
+    
     private void Update()
     {
-        if(storyChapterSync.ChapterIndex.Value + 2 > notes.Count)
+        var index = 0;
+        
+        if (chipState.IsAnySensorActive())
         {
-            text.text = "No notes for this chapter";
+            index = chipState.GetFirstActiveSensor() + 1;
+        }
+
+        if(index > notes.Count)
+        {
+            text.text = "No notes";
             return;
         }
         else
         {
-            if(lastChapterIndex != storyChapterSync.ChapterIndex.Value)
-            {
-                text.text = notes[storyChapterSync.ChapterIndex.Value + 1].text;
-                scrollContent.transform.localPosition = Vector3.zero;
-            } 
-            
-            lastChapterIndex = storyChapterSync.ChapterIndex.Value;
+            text.text = notes[index].text;
         }
     }
-*/
+
     private void OnValidate()
     {
  #if UNITY_EDITOR

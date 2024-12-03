@@ -12,12 +12,17 @@ public class UDP_Connector : MonoBehaviour
     public ushort port = 6457;
     private UdpClient udpClient;
 
-    [Title("Send Message")] public string targetIP = "192.168.1.255";
+    
+    [Title("Send Message")] 
+    public string broadcastIp_local = "172.20.255.255";
+    public string broadcastIp_global = "255.255.255.255";
     public ushort targetPort = 6455;
 
     [HideInInspector] public UnityEvent<string> OnMessageReceived;
     [HideInInspector] public UnityEvent<string, IPEndPoint> OnMessageReceivedWithEndPoint;
     [HideInInspector] public UnityEvent<byte[], IPEndPoint> OnBytesReceivedWithEndPoint;
+
+    private string targetIP => UniversalBroadcastToggle.IsOn ? broadcastIp_global : broadcastIp_local;
 
     void Awake()
     {
