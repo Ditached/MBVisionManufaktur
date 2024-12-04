@@ -160,6 +160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 673295941395756491}
   - component: {fileID: 529149722415503531}
+  - component: {fileID: 7749015744898497131}
   m_Layer: 5
   m_Name: VisionPro
   m_TagString: Untagged
@@ -209,6 +210,7 @@ MonoBehaviour:
   timeDissconnectedText: {fileID: 2862017445549351395}
   timeConnectedText: {fileID: 6779674107080148974}
   timePendingText: {fileID: 3719756337102737121}
+  canvasgroup: {fileID: 7749015744898497131}
   visionConnection:
     ip: 
     buildNumber: 0
@@ -217,6 +219,18 @@ MonoBehaviour:
   visionIcon: {fileID: 2602322789449682435}
   ipText: {fileID: 840211173150069520}
   versionText: {fileID: 7635745453894259169}
+--- !u!225 &7749015744898497131
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2813558369476135880}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2959429940466064503
 GameObject:
   m_ObjectHideFlags: 0
