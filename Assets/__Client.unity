@@ -7819,11 +7819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1195.35
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 725.55
       objectReference: {fileID: 0}
     - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: chipState
@@ -7934,7 +7934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663779458693462987, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.016723633
       objectReference: {fileID: 0}
     - target: {fileID: 7663779458693462987, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -8022,7 +8022,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030553983171578257, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 627.5864
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
