@@ -7819,11 +7819,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1195.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 725.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: chipState
@@ -7934,7 +7934,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663779458693462987, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.016723633
+      value: -0.0031738281
       objectReference: {fileID: 0}
     - target: {fileID: 7663779458693462987, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_AnchoredPosition.y
