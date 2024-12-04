@@ -7694,16 +7694,94 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1195.35
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1601486358112558573, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 725.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: chipState
       value: 
       objectReference: {fileID: 1752530214}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: json_file
+      value: 
+      objectReference: {fileID: 4900000, guid: 47bcccee192b44553a3a5ecf71cae3d2, type: 3}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[1].text
+      value: "599U MANUFAKTUR Ireland mid green magno (new SL colour)\nPersonal favorite\nColor
+        originates from the historic Maybach collection, where it was available as
+        a metallic paint. \nDraws inspiration from the Irish Highlands. \nExceptionally
+        high-quality finish enriched with a multitude of effect pigments offering
+        a dynamic, multi-tonal look. \nAlready know this paint from the SL, where
+        we re-introduced it as part of our extended MANUFAKTUR portfolio.\n\nFirst
+        OEM to bring Magno paints into series production.\nToday, all Magno paints
+        are part of the MANUFAKTUR programme; MANUFAKTUR signature element. \n\nWith
+        their matte clear coat, they deliver a satin-like, matte appearance \u2013
+        particularly popular on AMG models.\n\n825U MANUFAKTUR classicgr\xFCn uni
+        (G) - alter 50er Jahre Lack \u201Edunkelgr\xFCn uni\u201C\n255U MANUFAKTUR
+        oliv metallic (G & S-Class) \u2013 alter designo Lack\n271U MANUFAKTUR citrinbraun
+        magno (G)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[2].text
+      value: "996U MANUFAKTUR hyazinthrot metallic\n\nIconic designo color available
+        across numerous models\nHyacinth Red was created to achieve an intensely
+        luminous red. \nIntroduced a new pigment, used for the first time in Mercedes-Benz\u2019s
+        palette, to achieve its vibrant brilliance.\n\nMetallic Paints: Contain metallic
+        particles in the basis coat, \nmaking the paint sparkle and enhancing its
+        brilliance (e.g., Ros\xE9 Gold Metallic).\n\n685U MANUFAKTUR yellowstone
+        uni (GT 4-Door)\n658U MANUFAKTUR kupferorange magno (G & GT 4-Door)\n817U
+        MANUFAKTUR exklusiv ros\xE9gold metallic"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[9].text
+      value: "799U MANUFAKTUR exklusiv diamantwei\xDF bright\n\nHistoric designo
+        color that revolutionized automotive paint. \nMarked the debut of a production-ready
+        pearl white finish, \nno other manufacturer had achieved at the time. \nDiamond
+        White became the benchmark for multi-layered pearl white paints in series
+        production\n\nSolid Paints: Offer a rich, uniform look without metallic particles
+        in the clear coat, \nresulting in an even and consistent colour (e.g., Classic
+        Green Uni).\n\n685U MANUFAKTUR yellowstone uni (GT 4-Door)\n658U MANUFAKTUR
+        kupferorange magno (G & GT 4-Door)\n817U MANUFAKTUR exklusiv ros\xE9gold
+        metallic"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[11].text
+      value: "379U MANUFAKTUR orange flame metallic\n\nA new addition to the SL and
+        GT color palette\nOrange Flame Metallic radiates energy and modernity, \nmaking
+        a striking statement on the road. (Bentley Paint)\n\n685U MANUFAKTUR yellowstone
+        uni (GT 4-Door)\n658U MANUFAKTUR kupferorange magno (G & GT 4-Door)\n817U
+        MANUFAKTUR exklusiv ros\xE9gold metallic"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[12].text
+      value: "162U MANUFAKTUR s\xFCdseeblau metallic (G)\n\nSome of you may remember
+        this colour from the A-Class (W176). \nBack then, all A-Class paints were
+        inspired by natural phenomena. \nThis deep blue is inspired by natural phenomena.
+        \nIts rich tone evokes the mesmerizing depths of the ocean.\n\n896U MANUFAKTUR
+        exklusiv brilliantblau metallic (G)\n183U MANUFAKTUR exklusiv magnetitschwarz
+        metallic (G)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[13].text
+      value: "124U MANUFAKTUR classicgrau uni (G & GT 4-Door)\n\nHeritage Mercedes-Benz
+        colour, first introduced around the 1950s. \nIt pays homage to the brand's
+        storied past while remaining timelessly elegant.\n\nSolid Paints: Offer a
+        rich, uniform look without metallic particles in the clear coat, \nresulting
+        in an even and consistent colour (e.g., Classic Green Uni)."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4295591963471942186, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
+      propertyPath: notes.Array.data[15].text
+      value: "734U MANUFAKTUR hightechsilber magno (SL, GT & GLC)\n\nModern reinterpretation
+        of the iconic Mercedes-Benz silver. \nFeatures a more dynamic light-dark
+        contrast. \n\nUnlike its predecessor, which leaned towards a flat, silvery-white
+        tone, \nHigh-Tech Silver comes to life with greater depth, a subtle hue,
+        \nand striking shifts between light and shadow.\n\n896U MANUFAKTUR exklusiv
+        brilliantblau metallic (G)\n183U MANUFAKTUR exklusiv magnetitschwarz metallic
+        (G)"
+      objectReference: {fileID: 0}
     - target: {fileID: 4601779154761938743, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_Name
       value: Moderator Notes
@@ -7718,7 +7796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7663779458693462987, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.016723633
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8140261548665237856, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7774,7 +7852,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9030553983171578257, guid: b9a296e81e8af4379bd76efce8e69f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 627.5864
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
