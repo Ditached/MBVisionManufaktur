@@ -123,7 +123,7 @@ Material:
     - _ClearCoat: 1
     - _ClearCoatMask: 1
     - _ClearCoatSmoothness: 1
-    - _Clearcoat_Smoothness: 0.95
+    - _Clearcoat_Smoothness: 0.689
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
