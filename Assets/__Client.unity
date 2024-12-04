@@ -10087,6 +10087,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1809710615716305927, guid: 14a2431a087384174b105b147a525f82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2401871639157599006, guid: 14a2431a087384174b105b147a525f82, type: 3}
       propertyPath: m_Name
       value: S-Klasse-LP
@@ -10134,6 +10138,10 @@ PrefabInstance:
     - target: {fileID: 3035137162554290596, guid: 14a2431a087384174b105b147a525f82, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402200522815325054, guid: 14a2431a087384174b105b147a525f82, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6518843058226570743, guid: 14a2431a087384174b105b147a525f82, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
